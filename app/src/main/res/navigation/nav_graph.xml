@@ -6,6 +6,16 @@
     app:startDestination="@id/SearchFragment">
 
     <fragment
+        android:id="@+id/homeFragment"
+        android:name="edu.uw.info448.cocktailcreations.HomeFragment"
+        android:label="Home Fragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_SearchFragment"
+            app:destination="@id/SearchFragment" />
+    </fragment>
+
+    <fragment
         android:id="@+id/SearchFragment"
         android:name="edu.uw.info448.cocktailcreations.SearchFragment"
         android:label="Search Fragment"
