@@ -13,29 +13,25 @@ class MainActivity : AppCompatActivity() {
 
     private val homeFragment = HomeFragment()
     private val searchFragment = SearchFragment()
-    //private val cameraFragment = CameraFragment()
-    //private val randomFragment = RandomFragment()
+    private val cameraFragment = CameraFragment()
+    private val randomFragment = RandomFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         replaceFrag(homeFragment)
 
+        //navigation
         val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigation.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.homeFragment -> replaceFrag(homeFragment)
                 R.id.searchFragment -> replaceFrag(searchFragment)
-                /*R.id.cameraFragment -> replaceFrag(cameraFragment)
-                R.id.randomFragment -> replaceFrag(randomFragment)*/
+                R.id.cameraFragment -> replaceFrag(cameraFragment)
+                R.id.randomFragment -> replaceFrag(randomFragment)
             }
             true
         }
-        //Initialize the bottom navigation view
-        //create bottom navigation view object
-        /*val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        val navController = findNavController(R.id.nav_fragment)
-        bottomNavigationView.setupWithNavController(navController)*/
     }
 
     private fun replaceFrag(fragment: Fragment) {
