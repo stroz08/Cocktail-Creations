@@ -20,7 +20,7 @@ private const val BASE_URL = "https://thecocktaildb.com/api/json/v1/1/"
 
 interface CocktailDBApiService {
     // Search for a cocktail by name
-    @GET("search.php?")
+    @GET("search.php?s=")
     fun getCocktails(@Query("s") cocktailName: String): Call<ResponseData>
 }
 

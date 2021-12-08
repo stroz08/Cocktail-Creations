@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.2046875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19823423779141588" />
         <entry key="app/src/main/res/layout/fragment_random.xml" value="0.2046875" />
+        <entry key="app/src/main/res/layout/fragment_recipe_card.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/list_cocktail_item.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.22552083333333334" />
