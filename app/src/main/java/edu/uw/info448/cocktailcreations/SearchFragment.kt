@@ -60,34 +60,3 @@ class SearchFragment : Fragment() {
         return rootView
     }
 }
-
-class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
-
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val cocktailName: TextView = view.findViewById<TextView>(R.id.cocktail)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.list_cocktail_item,
-            parent,
-            false
-        )
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.cocktailName.text = item!!.name
-    }
-}
-
-class CocktailDiffCallback : DiffUtil.ItemCallback<Cocktail>() {
-    override fun areItemsTheSame(oldItem: Cocktail, newItem: Cocktail): Boolean {
-        return oldItem == newItem
-    }
-
-    override fun areContentsTheSame(oldItem: Cocktail, newItem: Cocktail): Boolean {
-        return oldItem == newItem
-    }
-}

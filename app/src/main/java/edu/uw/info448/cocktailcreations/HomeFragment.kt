@@ -12,6 +12,7 @@ import android.widget.TextView
 import retrofit2.Callback
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.uw.info448.cocktailcreations.network.CocktailDBApi
 import edu.uw.info448.cocktailcreations.network.CocktailDBApiService
@@ -24,12 +25,15 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val adapter = CocktailListAdapter()
+        val recyclerView = view.findViewById<RecyclerView>(R.id.popularCocktailRecyclerView)
+        recyclerView.adapter = adapter
 
+        //martini is to test
+        MainViewModel().getCocktails(view, "Martini")
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return view
     }
 }

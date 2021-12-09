@@ -7,6 +7,7 @@ package edu.uw.info448.cocktailcreations
 import android.content.ContentValues
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,7 +33,7 @@ class MainViewModel : ViewModel() {
                 val body = response.body()
                 val cocktails = body!!.results
                 _cocktailData.value = cocktails
-                Log.v(TAG, "$cocktails")
+                Log.v(TAG, "Cocktails$cocktails")
             }
 
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
