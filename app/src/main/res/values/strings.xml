@@ -5,4 +5,7 @@
     <string name="home">Home</string>
     <string name="daily_cocktail">Daily Cocktail</string>
     <string name="popular_cocktail">Popular Cocktail</string>
+    <string name="directions">Directions</string>
+    <string name="ingredients">Ingredients</string>
+
 </resources>
