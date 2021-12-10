@@ -2,10 +2,12 @@ package edu.uw.info448.cocktailcreations
 /*
     Contributors: Jacob Strozyk, Siena South-Ciero
  */
+import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -22,11 +24,7 @@ class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHold
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.list_cocktail_item,
-            parent,
-            false
-        )
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_cocktail_item, parent, false)
         return ViewHolder(view)
     }
 

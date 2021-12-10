@@ -17,11 +17,16 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://thecocktaildb.com/api/json/v1/1/"
+private const val KEY = "c0dcf0f62fmsh212a7b38597d358p17e488jsn982d7a114d9f"
 
 interface CocktailDBApiService {
     // Search for a cocktail by name
     @GET("search.php?s=")
     fun getCocktails(@Query("s") cocktailName: String): Call<ResponseData>
+
+    //Get Popular cocktails
+    @GET("popular.php?rapidapi-key=$KEY")
+    fun getPopular():  Call<ResponseData>
 }
 
 private val moshi = Moshi.Builder()

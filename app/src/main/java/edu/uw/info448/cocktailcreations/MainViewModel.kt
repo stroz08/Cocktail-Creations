@@ -27,8 +27,25 @@ class MainViewModel : ViewModel() {
     val cocktailData : LiveData<List<Cocktail>>
         get() = _cocktailData
 
+    //get cocktail
     fun getCocktails(v: View, query: String) {
         CocktailDBApi.retrofitService.getCocktails(query).enqueue(object: Callback<ResponseData> {
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                val body = response.body()
+                val cocktails = body!!.results
+                _cocktailData.value = cocktails
+                Log.v(TAG, "Cocktails$cocktails")
+            }
+
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Failure: ${t.message}")
+            }
+        })
+    }
+
+    //get popular cocktails
+    fun getPopular() {
+        CocktailDBApi.retrofitService.getPopular().enqueue(object : Callback<ResponseData> {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
