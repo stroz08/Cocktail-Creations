@@ -16,5 +16,5 @@
     <item
         android:id="@+id/randomFragment"
         android:title="Random"
-        android:icon="@drawable/random"/>
+        android:icon="@drawable/cocktail_image"/>
 </menu>

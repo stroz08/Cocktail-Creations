@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="300dp"
         android:layout_height="250dp"
-        android:src="@drawable/random"
+        android:src="@drawable/cocktail_image"
         android:layout_gravity="center"/>
 
     <TextView
