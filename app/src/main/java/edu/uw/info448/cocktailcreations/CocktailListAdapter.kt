@@ -20,7 +20,7 @@ private const val TAG = "CocktailListAdapter"
 class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val cocktailName: TextView = view.findViewById<TextView>(R.id.cocktailListName)
+        val cocktailName: TextView = view.findViewById(R.id.cocktailListName)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,6 +29,8 @@ class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHold
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.v(TAG, "we here")
+
         val item = getItem(position)
         holder.cocktailName.text = item!!.name
         Log.v(TAG, "NAME: $item!!.name")

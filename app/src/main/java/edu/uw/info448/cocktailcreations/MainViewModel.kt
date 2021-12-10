@@ -49,7 +49,8 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
-                _cocktailData.value = cocktails
+                //_cocktailData.value = cocktails
+                _cocktailData.postValue(cocktails)
                 Log.v(TAG, "Cocktails$cocktails")
             }
 

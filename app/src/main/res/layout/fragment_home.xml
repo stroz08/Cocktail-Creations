@@ -1,54 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Siena South-Ciero made this layout-->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".HomeFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/home"
-            android:textSize="36sp"
-            android:gravity="center"
-            android:layout_margin="20dp"/>
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:src="@drawable/daily_cocktail"
-            android:layout_gravity="center"/>
+        android:layout_height="wrap_content"
+        android:text="@string/home"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_margin="20dp"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:src="@drawable/daily_cocktail"
+        android:layout_gravity="center"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/popular_cocktail"
-            android:textSize="24sp"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"/>
-        <HorizontalScrollView
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/popular_cocktail"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"/>
+   <!-- <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp">
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="200dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/popularCocktailRecyclerView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/popularCocktailRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-            </LinearLayout>
-        </HorizontalScrollView>
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </LinearLayout>
+    </HorizontalScrollView>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popularCocktailRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</LinearLayout>
