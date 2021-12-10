@@ -16,8 +16,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://thecocktaildb.com/api/json/v1/1/"
-private const val KEY = "c0dcf0f62fmsh212a7b38597d358p17e488jsn982d7a114d9f"
+private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v2/"
+private const val KEY = "9973533"
 
 interface CocktailDBApiService {
     // Search for a cocktail by name
@@ -25,7 +25,7 @@ interface CocktailDBApiService {
     fun getCocktails(@Query("s") cocktailName: String): Call<ResponseData>
 
     //Get Popular cocktails
-    @GET("popular.php?rapidapi-key=$KEY")
+    @GET("$KEY/popular.php")
     fun getPopular():  Call<ResponseData>
 }
 
