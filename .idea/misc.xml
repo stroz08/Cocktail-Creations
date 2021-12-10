@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/drawable/photo.xml" value="0.2703125" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/drawable/random.xml" value="0.2703125" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/drawable/search.xml" value="0.2703125" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/layout/fragment_random.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/layout/fragment_recipe_card.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/brand/Desktop/info448au21-final/app/src/main/res/layout/fragment_search.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/fragment_search.xml" value="0.28306159420289856" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/list_cocktail_item.xml" value="0.2694746376811594" />
