@@ -22,10 +22,19 @@ private const val TAG = "MainViewModel"
 
 class MainViewModel : ViewModel() {
 
-    private var _cocktailData = MutableLiveData<List<Cocktail>>()
+    private var _cocktailSearchData = MutableLiveData<List<Cocktail>>()
 
-    val cocktailData : LiveData<List<Cocktail>>
-        get() = _cocktailData
+    val cocktailSearchData : LiveData<List<Cocktail>>
+        get() = _cocktailSearchData
+
+    private val _popularCocktailData: MutableLiveData<List<Cocktail>> by lazy {
+        MutableLiveData<List<Cocktail>>().also {
+            getPopular()
+        }
+    }
+
+    val popularCocktailData: LiveData<List<Cocktail>>
+        get() = _popularCocktailData
 
     //get cocktail
     fun getCocktails(v: View, query: String) {
@@ -33,7 +42,7 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
-                _cocktailData.value = cocktails
+                _cocktailSearchData.value = cocktails
                 Log.v(TAG, "Cocktails$cocktails")
             }
 
@@ -49,7 +58,7 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
-                _cocktailData.value = cocktails
+                _popularCocktailData.value = cocktails
                 Log.v(TAG, "Cocktails$cocktails")
             }
 
@@ -65,7 +74,8 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
-                _cocktailData.value = cocktails
+                _popularCocktailData.value = cocktails
+                _popularCocktailData.postValue(cocktails)
                 Log.v(TAG, "Cocktails$cocktails")
             }
 

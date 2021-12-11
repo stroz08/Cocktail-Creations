@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+=======
+        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/list_cocktail_item.xml" value="0.20520833333333333" />
+>>>>>>> 7607455d6d3a966e0bee9975ee3552513a2d55b7
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/fragment_search.xml" value="0.28306159420289856" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/list_cocktail_item.xml" value="0.2694746376811594" />

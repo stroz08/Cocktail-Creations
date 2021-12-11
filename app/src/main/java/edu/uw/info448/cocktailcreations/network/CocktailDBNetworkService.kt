@@ -21,7 +21,7 @@ private const val KEY = "9973533"
 
 interface CocktailDBApiService {
     // Search for a cocktail by name
-    @GET("search.php?s=")
+    @GET("$KEY/search.php?s=")
     fun getCocktails(@Query("s") cocktailName: String): Call<ResponseData>
 
     //Get Popular cocktails

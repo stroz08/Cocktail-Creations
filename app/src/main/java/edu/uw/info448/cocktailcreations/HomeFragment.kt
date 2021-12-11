@@ -34,7 +34,6 @@ class HomeFragment : Fragment() {
         //popular cocktail
         val recyclerView = view.findViewById<RecyclerView>(R.id.popularCocktailRecyclerView)
         recyclerView.adapter = adapter
-
         viewModel.popularCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
             Log.v(TAG, "Updating: $it")
             adapter.submitList(it)
@@ -44,7 +43,6 @@ class HomeFragment : Fragment() {
         val newRecyclerView = view.findViewById<RecyclerView>(R.id.newCocktailRecyclerView)
         newRecyclerView.adapter = adapter
         MainViewModel().getLatest()
-
         return view
     }
 }
