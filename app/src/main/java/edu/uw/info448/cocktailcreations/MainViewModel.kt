@@ -49,8 +49,23 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
-                //_cocktailData.value = cocktails
-                _cocktailData.postValue(cocktails)
+                _cocktailData.value = cocktails
+                Log.v(TAG, "Cocktails$cocktails")
+            }
+
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Failure: ${t.message}")
+            }
+        })
+    }
+
+    //get new cocktails
+    fun getLatest() {
+        CocktailDBApi.retrofitService.getLatest().enqueue(object : Callback<ResponseData> {
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                val body = response.body()
+                val cocktails = body!!.results
+                _cocktailData.value = cocktails
                 Log.v(TAG, "Cocktails$cocktails")
             }
 

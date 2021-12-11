@@ -4,6 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Welcome!</string>
     <string name="popular_cocktail">Popular Cocktails</string>
+    <string name="new_cocktail">New Cocktails</string>
     <string name="directions">Directions</string>
     <string name="ingredients">Ingredients</string>
     <string name="random_drink_title">Random Drink Generator</string>

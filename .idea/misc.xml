@@ -3,11 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_search.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/doglo/Documents/2021_Autumn_Quarter/INFO448/info448au21-final/app/src/main/res/layout/fragment_signup.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/fragment_search.xml" value="0.28306159420289856" />
         <entry key="..\:/Users/jacob/Desktop/INFO448/cocktail-creations/app/src/main/res/layout/list_cocktail_item.xml" value="0.2694746376811594" />
@@ -15,9 +10,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4699378003837921" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.2046875" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19823423779141588" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/fragment_random.xml" value="0.2046875" />
         <entry key="app/src/main/res/layout/fragment_recipe_card.xml" value="0.21875" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.18115942028985507" />
+        <entry key="app/src/main/res/layout/fragment_signup.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/layout/list_cocktail_item.xml" value="0.18115942028985507" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.22552083333333334" />
       </map>

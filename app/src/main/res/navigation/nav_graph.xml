@@ -13,15 +13,15 @@
         android:label="Home Fragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_SearchFragment"
-            app:destination="@id/SearchFragment" />
+            android:id="@+id/action_to_RecipeFragment"
+            app:destination="@id/RecipeCard" />
     </fragment>
 
     <fragment
-        android:id="@+id/SearchFragment"
-        android:name="edu.uw.info448.cocktailcreations.SearchFragment"
-        android:label="Search Fragment"
-        tools:layout="@layout/fragment_search">
+        android:id="@+id/RecipeCard"
+        android:name="edu.uw.info448.cocktailcreations.RecipieCardFragment"
+        android:label="Recipe Fragment"
+        tools:layout="@layout/fragment_recipe_card">
     </fragment>
 
 </navigation>

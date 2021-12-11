@@ -9,13 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import edu.uw.info448.cocktailcreations.network.Cocktail
 
 private const val TAG = "CocktailListAdapter"
-
 
 class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -33,6 +33,12 @@ class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHold
         val item = getItem(position)
         holder.cocktailName.text = item!!.name
         Log.v(TAG, "NAME: $item!!.name")
+
+        //handle navigation
+        holder.cocktailName.setOnClickListener {
+            val action = HomeFragmentDirections.actionToRecipeFragment()
+            it.findNavController().navigate(action)
+        }
     }
 
     /*override fun getItemCount(): Int {

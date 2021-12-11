@@ -27,6 +27,10 @@ interface CocktailDBApiService {
     //Get Popular cocktails
     @GET("$KEY/popular.php")
     fun getPopular():  Call<ResponseData>
+
+    //Get new cocktails
+    @GET("$KEY/latest.php")
+    fun getLatest():  Call<ResponseData>
 }
 
 private val moshi = Moshi.Builder()
