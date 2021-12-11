@@ -7,5 +7,17 @@
     <string name="directions">Directions</string>
     <string name="ingredients">Ingredients</string>
     <string name="random_drink_title">Random Drink Generator</string>
+    <string name="login_subtitle">Login or sign up to experience all of the app\'s
+        features.</string>
+    <string name="login_button">Login</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
+    <string name="name_hint">Name</string>
+    <string name="signup_prompt1">Don\'t have an account?</string>
+    <string name="signup_prompt2">Tap here to sign up</string>
+    <string name="login_prompt1">Already have an account?</string>
+    <string name="login_prompt2">Tap here to login</string>
 
 </resources>
