@@ -42,7 +42,7 @@ class SearchFragment : Fragment() {
             Log.v(TAG, "Updating: $it")
             adapter.submitList(it)
         }
-        viewModel.cocktailData.observe(viewLifecycleOwner, cocktailObserver)
+        viewModel.cocktailSearchData.observe(viewLifecycleOwner, cocktailObserver)
 
         // Initialize RecyclerView
         adapter = CocktailListAdapter()
