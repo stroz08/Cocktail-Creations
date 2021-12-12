@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import edu.uw.info448.cocktailcreations.network.Cocktail
 
 private const val TAG = "CocktailListAdapter"
@@ -35,7 +36,6 @@ class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHold
         val cocktailName = item.name
 
         holder.cocktailName.text = item!!.name
-
 
         //handle navigation
         holder.cocktailName.setOnClickListener {

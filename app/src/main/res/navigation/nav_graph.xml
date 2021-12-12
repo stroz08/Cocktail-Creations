@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/RecipeCard"
-        android:name="edu.uw.info448.cocktailcreations.RecipieCardFragment"
+        android:name="edu.uw.info448.cocktailcreations.RecipeCardFragment"
         android:label="Recipe Fragment"
         tools:layout="@layout/fragment_recipe_card">
         <argument

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipieCardFragment"
+    tools:context=".RecipeCardFragment"
     android:background="@color/white"
     android:fillViewport="true">
     <LinearLayout
@@ -17,10 +17,10 @@
             android:textSize="30sp"
             android:layout_margin="10dp"/>
         <ImageView
+            android:id="@+id/recipeCardImg"
             android:layout_width="300dp"
             android:layout_height="350dp"
             android:layout_gravity="center"
-            android:src="@drawable/photo"
             android:layout_marginTop="20dp"/>
 
         <TextView
