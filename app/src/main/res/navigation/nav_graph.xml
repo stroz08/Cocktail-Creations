@@ -22,6 +22,12 @@
         android:name="edu.uw.info448.cocktailcreations.RecipieCardFragment"
         android:label="Recipe Fragment"
         tools:layout="@layout/fragment_recipe_card">
+        <argument
+            android:name="cocktailName"
+            app:argType="string"/>
+        <argument
+            android:name="cocktailImg"
+            app:argType="string"/>
     </fragment>
 
 </navigation>

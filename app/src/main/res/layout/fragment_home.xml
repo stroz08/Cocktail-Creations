@@ -40,7 +40,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popularCocktailRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:scrollbars="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
@@ -55,7 +55,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/newCocktailRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:scrollbars="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
