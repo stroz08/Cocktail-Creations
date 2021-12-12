@@ -11,6 +11,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import edu.uw.info448.cocktailcreations.network.Cocktail
+import androidx.recyclerview.widget.LinearLayoutManager
+
+
+
 
 private const val TAG = "HomeFragment"
 
@@ -25,6 +29,9 @@ class HomeFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
+        //horizontal layout
+        val layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         //viewModel
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
@@ -34,6 +41,7 @@ class HomeFragment : Fragment() {
         //popular cocktail
         val recyclerView = view.findViewById<RecyclerView>(R.id.popularCocktailRecyclerView)
         recyclerView.adapter = adapter
+        recyclerView.layoutManager = layoutManager
         viewModel.popularCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
             Log.v(TAG, "Updating: $it")
             adapter.submitList(it)
@@ -42,6 +50,7 @@ class HomeFragment : Fragment() {
         //new cocktail
         val newRecyclerView = view.findViewById<RecyclerView>(R.id.newCocktailRecyclerView)
         newRecyclerView.adapter = adapter
+        //newRecyclerView.layoutManager = layoutManager
         MainViewModel().getLatest()
         return view
     }
