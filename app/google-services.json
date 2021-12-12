@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "109496899464",
+    "project_id": "info448-cocktailapp",
+    "storage_bucket": "info448-cocktailapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109496899464:android:e2218648d901db7c818c3d",
+        "android_client_info": {
+          "package_name": "edu.uw.info448.cocktailcreations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109496899464-68tvn5v6m5vf2hgho3tr7pg28tul9pi0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyP5KRHSYyIFmjJtzZEXV_4B0s-1KPxIA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109496899464-68tvn5v6m5vf2hgho3tr7pg28tul9pi0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
