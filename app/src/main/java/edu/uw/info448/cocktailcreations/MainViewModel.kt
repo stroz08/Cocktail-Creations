@@ -35,6 +35,15 @@ class MainViewModel : ViewModel() {
 
     val popularCocktailData: LiveData<List<Cocktail>>
         get() = _popularCocktailData
+    private val _newCocktailData: MutableLiveData<List<Cocktail>> by lazy {
+        MutableLiveData<List<Cocktail>>().also {
+            getLatest()
+        }
+    }
+
+    val newCocktailData: LiveData<List<Cocktail>>
+        get() = _newCocktailData
+
 
     //get cocktail
     fun getCocktails(v: View, query: String) {
@@ -59,7 +68,6 @@ class MainViewModel : ViewModel() {
                 val body = response.body()
                 val cocktails = body!!.results
                 _popularCocktailData.value = cocktails
-                Log.v(TAG, "Cocktails$cocktails")
             }
 
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
@@ -74,9 +82,7 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 val body = response.body()
                 val cocktails = body!!.results
-                _popularCocktailData.value = cocktails
-                _popularCocktailData.postValue(cocktails)
-                Log.v(TAG, "Cocktails$cocktails")
+                _newCocktailData.value = cocktails
             }
 
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {

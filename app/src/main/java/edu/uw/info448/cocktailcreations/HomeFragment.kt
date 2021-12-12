@@ -32,11 +32,16 @@ class HomeFragment : Fragment() {
         //horizontal layout
         val layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        val newLayoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         //viewModel
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //Adapter
         val adapter = CocktailListAdapter()
+        val newAdapter = CocktailListAdapter()
+
 
         //popular cocktail
         val recyclerView = view.findViewById<RecyclerView>(R.id.popularCocktailRecyclerView)
@@ -49,9 +54,13 @@ class HomeFragment : Fragment() {
 
         //new cocktail
         val newRecyclerView = view.findViewById<RecyclerView>(R.id.newCocktailRecyclerView)
-        newRecyclerView.adapter = adapter
-        //newRecyclerView.layoutManager = layoutManager
-        MainViewModel().getLatest()
+        newRecyclerView.adapter = newAdapter
+        newRecyclerView.layoutManager = newLayoutManager
+        viewModel.newCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
+            Log.v(TAG, "Updating: $it")
+            newAdapter.submitList(it)
+        })
+
         return view
     }
 }
