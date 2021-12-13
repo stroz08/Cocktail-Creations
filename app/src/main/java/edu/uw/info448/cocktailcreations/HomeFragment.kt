@@ -12,9 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
 
-
-
-
 private const val TAG = "HomeFragment"
 
 class HomeFragment : Fragment() {

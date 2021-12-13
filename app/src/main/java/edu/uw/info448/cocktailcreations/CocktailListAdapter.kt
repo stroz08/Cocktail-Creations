@@ -31,6 +31,7 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
         //Recipe Cards
         val measurementList: TextView = view.findViewById(R.id.measurement)
         val ingredientList: TextView = view.findViewById(R.id.ingredient)
+        val instruct: TextView = view.findViewById(R.id.directions_text)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -63,6 +64,7 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
         } else { //Recipe cards
             holder.measurementList.text = item.measurement1
             holder.ingredientList.text = item.ingredient1
+            holder.instruct.text = item.instructions
         }
 
     }

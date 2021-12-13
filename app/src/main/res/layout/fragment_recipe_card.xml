@@ -36,16 +36,18 @@
             android:layout_height="wrap_content"
             android:scrollbars="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/directions"
             android:textSize="24sp"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_margin="10dp"/>
         <TextView
             android:id="@+id/directions_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_margin="10dp" />
     </LinearLayout>
 </ScrollView>

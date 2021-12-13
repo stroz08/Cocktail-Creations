@@ -1,5 +1,8 @@
 package edu.uw.info448.cocktailcreations
 
+/*
+    Contributors: Jacob Strozyk, Siena South-Ciero
+ */
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
