@@ -20,5 +20,6 @@
     <string name="signup_prompt2">Tap here to sign up</string>
     <string name="login_prompt1">Already have an account?</string>
     <string name="login_prompt2">Tap here to login</string>
+    <string name="random">Generate Random Drink</string>
 
 </resources>
