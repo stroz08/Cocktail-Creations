@@ -28,6 +28,9 @@
         <argument
             android:name="cocktailImg"
             app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
     </fragment>
 
 </navigation>
