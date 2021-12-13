@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import edu.uw.info448.cocktailcreations.network.Cocktail
 import androidx.recyclerview.widget.LinearLayoutManager
 
 

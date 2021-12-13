@@ -28,7 +28,7 @@
         <argument
             android:name="cocktailImg"
             app:argType="string"/>
-        <argument
+<!--        <argument
             android:name="ingredient1"
             app:argType="string"/>
         <argument
@@ -39,7 +39,7 @@
             app:argType="string"/>
         <argument
             android:name="ingredient4"
-            app:argType="string"/>
+            app:argType="string"/>-->
         <!--<argument
             android:name="ingredient1"
             app:argType="string"/>

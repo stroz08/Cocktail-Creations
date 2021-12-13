@@ -11,9 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import edu.uw.info448.cocktailcreations.network.Cocktail
 import edu.uw.info448.cocktailcreations.network.CocktailDBApi
-import edu.uw.info448.cocktailcreations.network.ResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

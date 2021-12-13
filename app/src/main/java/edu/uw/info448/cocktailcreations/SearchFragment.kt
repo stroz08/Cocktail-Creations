@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import edu.uw.info448.cocktailcreations.network.Cocktail
 
 private const val TAG = "SearchFragment"
 
