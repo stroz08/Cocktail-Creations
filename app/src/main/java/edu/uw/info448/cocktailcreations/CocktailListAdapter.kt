@@ -2,14 +2,14 @@ package edu.uw.info448.cocktailcreations
 /*
     Contributors: Jacob Strozyk, Siena South-Ciero
  */
-import android.media.Image
-import android.os.Bundle
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -19,7 +19,7 @@ import edu.uw.info448.cocktailcreations.network.Cocktail
 
 private const val TAG = "CocktailListAdapter"
 
-class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
+class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cocktailName: TextView = view.findViewById(R.id.cocktailListName)
         val cocktailImg: ImageView = view.findViewById(R.id.cocktailListImg)
@@ -36,6 +36,9 @@ class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHold
         val cocktailName = item.name
 
         holder.cocktailName.text = item!!.name
+        Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
+        Log.v(TAG, "$context")
+        Log.v(TAG,"CocktailImg: $cocktailImg")
 
         //handle navigation
         holder.cocktailName.setOnClickListener {
