@@ -31,6 +31,49 @@
         <argument
             android:name="ingredient1"
             app:argType="string"/>
+        <argument
+            android:name="ingredient2"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient3"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient4"
+            app:argType="string"/>
+        <!--<argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        <argument
+            android:name="ingredient1"
+            app:argType="string"/>
+        -->
     </fragment>
 
 </navigation>

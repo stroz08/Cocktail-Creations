@@ -36,6 +36,9 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
         val cocktailImg = item.image
         val cocktailName = item.name
         val ingredient1 = item.ingredient1
+        val ingredient2 = item.ingredient2
+        val ingredient3 = item.ingredient3
+        //val ingredient4 = item.ingredient4
 
         holder.cocktailName.text = item!!.name
         Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
@@ -43,7 +46,8 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
         //handle navigation
         holder.cocktailImg.setOnClickListener {
             Log.v(TAG, "$cocktailName")
-            val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg, ingredient1)
+            val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg,
+                ingredient1, ingredient2, ingredient3, "")
             it.findNavController().navigate(action)
         }
     }
