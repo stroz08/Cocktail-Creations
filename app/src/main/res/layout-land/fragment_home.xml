@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Siena South-Ciero made this layout-->
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context=".HomeFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textSize="36sp"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/popular_cocktail"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/popularCocktailRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scrollbars="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_cocktail"
+            android:textSize="30sp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/newCocktailRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scrollbars="horizontal"
+            android:layout_marginBottom="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </LinearLayout>
+</ScrollView>

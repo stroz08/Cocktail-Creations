@@ -3,6 +3,7 @@ package edu.uw.info448.cocktailcreations
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.navigation.findNavController
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+    }
+
+    //save state
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
     }
 
     private fun replaceFrag(fragment: Fragment) {

@@ -64,7 +64,6 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
 
             //handle navigation
             holder.cocktailImg.setOnClickListener {
-                Log.v(TAG, "$cocktailName")
                 val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg)
                 it.findNavController().navigate(action)
             }
