@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -40,18 +41,22 @@ class RecipeCardFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //Adapter
-        val adapter = CocktailListAdapter(this, "list_ingredient_item")
+        /*val adapter = CocktailListAdapter(this, "list_ingredient_item")
 
-        //popular cocktail
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.popularCocktailRecyclerView)
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.recipeRecyclerView)
         recyclerView?.adapter = adapter
         viewModel.popularCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
             Log.v(TAG, "Updating: $it")
             adapter.submitList(it)
-        })
+        })*/
 
         rootView.findViewById<TextView>(R.id.recipeCardName).text = cocktailName
         Glide.with(this).load("$cocktailImg").into(rootView.findViewById(R.id.recipeCardImg))
+
+        val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn);
+        heartBtn.setOnClickListener() {
+            heartBtn.setImageResource(R.drawable.filled_heart);
+        }
         return rootView
     }
 }
