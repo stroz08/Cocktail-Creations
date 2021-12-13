@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home">Home</string>
+    <string name="search">Discover</string>
     <string name="popular_cocktail">Popular Cocktails</string>
     <string name="new_cocktail">New Cocktails</string>
     <string name="directions">Directions</string>
@@ -10,6 +11,7 @@
     <string name="random_drink_title">Random Drink Generator</string>
     <string name="login_subtitle">Login or sign up to experience all of the app\'s
         features.</string>
+    <string name="logout">Logout</string>
     <string name="login_button">Login</string>
     <string name="signup_button">Sign Up</string>
     <string name="email_hint">Email</string>

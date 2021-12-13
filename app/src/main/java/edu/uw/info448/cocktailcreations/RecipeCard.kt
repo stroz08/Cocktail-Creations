@@ -15,6 +15,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import android.graphics.drawable.Drawable
+
+
+
 
 private const val TAG = "Recipe Card"
 
@@ -53,9 +57,16 @@ class RecipeCardFragment : Fragment() {
         rootView.findViewById<TextView>(R.id.recipeCardName).text = cocktailName
         Glide.with(this).load("$cocktailImg").into(rootView.findViewById(R.id.recipeCardImg))
 
-        val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn);
+        val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn)
         heartBtn.setOnClickListener() {
-            heartBtn.setImageResource(R.drawable.filled_heart);
+            val res = resources.getDrawable(R.drawable.empty_heart)
+            Log.v(TAG, "$res")
+            Log.v(TAG, "$heartBtn.resources")
+            if (heartBtn.resources == res) {
+                heartBtn.setImageResource(R.drawable.filled_heart);
+            } else {
+                heartBtn.setImageResource(R.drawable.empty_heart);
+            }
         }
         return rootView
     }
