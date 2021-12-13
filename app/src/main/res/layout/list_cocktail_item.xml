@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Contributors: Jacob Strozyk, Siena South-Ciero-->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/cocktailListName"
-            android:textSize="15sp"
-            android:paddingEnd="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/listPreferredItemHeight"
-            />
-       <!-- <ImageView
-            android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"/>-->
-    </LinearLayout>
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
+   <ImageView
+       android:id="@+id/cocktailListImg"
+       android:layout_width="350dp"
+       android:layout_height="350dp"
+       android:layout_marginBottom="8dp"
+       android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/cocktailListName"
+        android:textSize="70sp"
+        app:autoSizeTextType="uniform"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:shadowColor="@color/text_shadow"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        android:minHeight="?android:attr/listPreferredItemHeight"/>
+</RelativeLayout>
 
     <!--<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray"/>-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>

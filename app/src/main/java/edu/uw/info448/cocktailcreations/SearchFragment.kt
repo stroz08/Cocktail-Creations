@@ -45,7 +45,7 @@ class SearchFragment : Fragment() {
         viewModel.cocktailSearchData.observe(viewLifecycleOwner, cocktailObserver)
 
         // Initialize RecyclerView
-        adapter = CocktailListAdapter()
+        adapter = CocktailListAdapter(this, "list_cocktail_item")
         val recycler = rootView.findViewById<RecyclerView>(R.id.cocktail_list)
         recycler.layoutManager = LinearLayoutManager(this.context)
         recycler.adapter = adapter

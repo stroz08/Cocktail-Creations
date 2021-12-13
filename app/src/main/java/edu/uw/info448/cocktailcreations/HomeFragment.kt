@@ -35,12 +35,13 @@ class HomeFragment : Fragment() {
 
         val newLayoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
         //viewModel
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //Adapter
-        val adapter = CocktailListAdapter()
-        val newAdapter = CocktailListAdapter()
+        val adapter = CocktailListAdapter(this, "list_cocktail_item")
+        val newAdapter = CocktailListAdapter(this, "list_cocktail_item")
 
 
         //popular cocktail

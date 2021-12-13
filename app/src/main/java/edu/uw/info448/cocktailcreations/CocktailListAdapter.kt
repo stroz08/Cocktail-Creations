@@ -2,24 +2,28 @@ package edu.uw.info448.cocktailcreations
 /*
     Contributors: Jacob Strozyk, Siena South-Ciero
  */
-import android.media.Image
+import android.content.Context
+import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import edu.uw.info448.cocktailcreations.network.Cocktail
 
 private const val TAG = "CocktailListAdapter"
 
-class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
+class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cocktailName: TextView = view.findViewById(R.id.cocktailListName)
+        val cocktailImg: ImageView = view.findViewById(R.id.cocktailListImg)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,15 +32,22 @@ class CocktailListAdapter() : ListAdapter<Cocktail, CocktailListAdapter.ViewHold
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.v(TAG, "we here")
-
         val item = getItem(position)
+        val cocktailImg = item.image
+        val cocktailName = item.name
+        val ingredient1 = item.ingredient1
+        val ingredient2 = item.ingredient2
+        val ingredient3 = item.ingredient3
+        //val ingredient4 = item.ingredient4
+
         holder.cocktailName.text = item!!.name
-        Log.v(TAG, "NAME: $item!!.name")
+        Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
 
         //handle navigation
-        holder.cocktailName.setOnClickListener {
-            val action = HomeFragmentDirections.actionToRecipeFragment()
+        holder.cocktailImg.setOnClickListener {
+            Log.v(TAG, "$cocktailName")
+            val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg,
+                ingredient1, ingredient2, ingredient3, "")
             it.findNavController().navigate(action)
         }
     }

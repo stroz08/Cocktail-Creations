@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     tools:context=".HomeFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:id="@+id/home"
@@ -21,26 +21,20 @@
             android:layout_height="wrap_content"
             android:text="@string/home"
             android:textSize="36sp"
-            android:gravity="center"
-            android:layout_margin="20dp"/>
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="250dp"
-            android:src="@drawable/daily_cocktail"
-            android:layout_gravity="center"/>
+            android:layout_margin="10dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/popular_cocktail"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/popularCocktailRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="350dp"
             android:scrollbars="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
@@ -48,15 +42,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/new_cocktail"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/newCocktailRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="350dp"
             android:scrollbars="horizontal"
+            android:layout_marginBottom="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </LinearLayout>
 </ScrollView>

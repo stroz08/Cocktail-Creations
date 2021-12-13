@@ -69,35 +69,37 @@ data class Cocktail (
 
     //ingredients
     @Json(name="strIngredient1")
-    val ingredient1: String,
-    /*@Json(name="strIngredient2")
-    val ingredient2: String,
+    val ingredient1: String = "",
+    @Json(name="strIngredient2")
+    val ingredient2: String = "",
     @Json(name="strIngredient3")
-    val ingredient3: String,
-    @Json(name="strIngredient4")
-    val ingredient4: String,
+    val ingredient3: String = "",
+    /*@Json(name="strIngredient4")
+    val ingredient4: String = "",
     @Json(name="strIngredient5")
-    val ingredient5: String,
+    val ingredient5: String = "",
     @Json(name="strIngredient6")
-    val ingredient6: String,
+    val ingredient6: String = "",
     @Json(name="strIngredient7")
-    val ingredient7: String,
+    val ingredient7: String = "",
     @Json(name="strIngredient8")
-    val ingredient8: String,
+    val ingredient8: String = "",
     @Json(name="strIngredient9")
-    val ingredient9: String,
+    val ingredient9: String = "",
     @Json(name="strIngredient10")
-    val ingredient10: String,
+    val ingredient10: String = "",
     @Json(name="strIngredient11")
-    val ingredient11: String,
+    val ingredient11: String = "",
     @Json(name="strIngredient12")
-    val ingredient12: String,
+    val ingredient12: String = "",
     @Json(name="strIngredient13")
-    val ingredient13: String,
-    @Json(name="strIngredient14")
-    val ingredient14: String,
+    val ingredient13: String = "",*/
+
+    //these 2 crash the app
+    /*@Json(name="strIngredient14")
+    val ingredient14: String = "",
     @Json(name="strIngredient15")
-    val ingredient15: String,*/
+    val ingredient15: String = "",*/
 
     //measurements
     @Json(name="strMeasure1")
