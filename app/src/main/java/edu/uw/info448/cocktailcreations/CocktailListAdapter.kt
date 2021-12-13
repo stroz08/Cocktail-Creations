@@ -29,10 +29,17 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
         val cocktailImg: ImageView = view.findViewById(R.id.cocktailListImg)
 
         //Recipe Cards
-        val measurementList: TextView = view.findViewById(R.id.measurement)
+        /*val measurementList: TextView = view.findViewById(R.id.measurement)
+        val ingredientList: TextView = view.findViewById(R.id.ingredient)
+        val instruct: TextView = view.findViewById(R.id.directions_text)*/
+    }
+
+    //Recipe Cards
+    /*inner class IngredientViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        //val measurementList: TextView = view.findViewById(R.id.measurement)
         val ingredientList: TextView = view.findViewById(R.id.ingredient)
         val instruct: TextView = view.findViewById(R.id.directions_text)
-    }
+    }*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         view = if(layoutType == "list_cocktail_item") {
@@ -62,9 +69,9 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
                 it.findNavController().navigate(action)
             }
         } else { //Recipe cards
-            holder.measurementList.text = item.measurement1
+            /*holder.measurementList.text = item.measurement1
             holder.ingredientList.text = item.ingredient1
-            holder.instruct.text = item.instructions
+            holder.instruct.text = item.instructions*/
         }
 
     }
