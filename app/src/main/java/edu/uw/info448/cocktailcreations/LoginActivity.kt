@@ -1,7 +1,7 @@
 package edu.uw.info448.cocktailcreations
 
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,11 +15,14 @@ class LoginActivity: AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         auth = Firebase.auth
-
+        val user = auth.currentUser
+        if (user != null) {
+            toMainActivity()
+        }
     }
 
     fun createAccount(email: String, password: String) {
@@ -29,7 +32,7 @@ class LoginActivity: AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    //toMainActivity()
+                    toMainActivity()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -46,7 +49,7 @@ class LoginActivity: AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
-                    //toMainActivity()
+                    toMainActivity()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -57,6 +60,7 @@ class LoginActivity: AppCompatActivity() {
     }
 
     private fun toMainActivity() {
-        // TODO: method to set intent to main activity
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }
