@@ -26,7 +26,12 @@ data class Cocktail (
     val instructions: String,
     @Json(name="strDrinkThumb")
     val image: String,
+    //@Json(name="ingredients")
+    //val ingredients : @RawValue List<RecipeData>
+) : Parcelable
 
+/*@Parcelize
+data class RecipeData(
     //ingredients
     @Json(name="strIngredient1")
     val ingredient1: String = "",
@@ -92,13 +97,4 @@ data class Cocktail (
     val measurement14: String,
     @Json(name="strMeasure15")
     val measurement15: String,*/
-) : Parcelable
-
-//idea to get the ingredient data
-@Parcelize
-data class recipeData(
-    @Json(name="strMeasure1")
-    val measurement1: String,
-    @Json(name="strIngredient1")
-    val ingredient1: String
-) : Parcelable
+) : Parcelable*/

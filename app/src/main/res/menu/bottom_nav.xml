@@ -10,11 +10,11 @@
         android:title="Search"
         android:icon="@drawable/search"/>
     <item
-        android:id="@+id/cameraFragment"
-        android:title="Camera"
-        android:icon="@drawable/camera"/>
-    <item
         android:id="@+id/randomFragment"
         android:title="Random"
         android:icon="@drawable/cocktail_image"/>
+    <item
+        android:id="@+id/profileFragment"
+        android:title="Profile"
+        android:icon="@drawable/profile"/>
 </menu>

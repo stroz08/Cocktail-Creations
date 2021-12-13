@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private val homeFragment = HomeFragment()
     private val searchFragment = SearchFragment()
-    private val cameraFragment = CameraFragment()
     private val randomFragment = RandomFragment()
+    private val profileFragment = ProfileFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.homeFragment -> replaceFrag(homeFragment)
                 R.id.searchFragment -> replaceFrag(searchFragment)
-                R.id.cameraFragment -> replaceFrag(cameraFragment)
                 R.id.randomFragment -> replaceFrag(randomFragment)
+                R.id.profileFragment -> replaceFrag(profileFragment)
             }
             true
         }
