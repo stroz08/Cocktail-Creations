@@ -1,6 +1,6 @@
 package edu.uw.info448.cocktailcreations
 
-//Siena South-Ciero worked on this fragment
+//Siena South-Ciero and Sarah West worked on this fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -33,10 +33,11 @@ class RecipeCardFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val args: RecipeCardFragmentArgs by navArgs()
-        cocktailName = args.cocktailName
-        cocktailImg = args.cocktailImg
-        recipe = args.recipe.toList()
+        arguments?.let {
+            cocktailName = it.getString("cocktailName")
+            cocktailImg = it.getString("cocktailImg")
+            recipe = it.getParcelableArrayList("recipe")
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

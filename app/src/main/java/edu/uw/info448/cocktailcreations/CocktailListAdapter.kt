@@ -1,8 +1,10 @@
 package edu.uw.info448.cocktailcreations
 /*
-    Contributors: Jacob Strozyk, Siena South-Ciero
+    Contributors: Jacob Strozyk, Siena South-Ciero, Sarah West
  */
 import android.content.Context
+import android.os.Bundle
+import android.os.Parcelable
 import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.w3c.dom.Text
+import java.util.ArrayList
 
 private const val TAG = "CocktailListAdapter"
 
@@ -43,8 +46,11 @@ class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, Cocktai
 
         //handle navigation
         holder.cocktailImg.setOnClickListener {
-            val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg, recipe)
-            it.findNavController().navigate(action)
+            val argBundle = Bundle()
+            argBundle.putString("cocktailName", cocktailName)
+            argBundle.putString("cocktailImg", cocktailImg)
+            argBundle.putParcelableArrayList("recipe", recipe as ArrayList<Ingredient>?)
+            it.findNavController().navigate(R.id.action_to_RecipeFragment, argBundle)
         }
     }
 
