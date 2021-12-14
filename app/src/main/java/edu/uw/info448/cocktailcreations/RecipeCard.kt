@@ -47,19 +47,16 @@ class RecipeCardFragment : Fragment() {
         rootView.findViewById<TextView>(R.id.recipeCardName).text = cocktailName
         Glide.with(this).load("$cocktailImg").into(rootView.findViewById(R.id.recipeCardImg))
         val size = recipe!!.size - 1
+        Log.v(TAG, "$recipe")
+        var result = ""
         for(i in 0 .. size) {
             val index = recipe!![i]
-            val test : String
             if(index.measurement != null) {
-                test = index.measurement + index.ingredientName
-            } else {
-                test = index.ingredientName
+                result += index.measurement + " "
             }
-            rootView.findViewById<TextView>(R.id.recipeList).text = test
+            result += index.ingredientName + "\n"
         }
-        val test = recipe!![0].ingredientName
-        //ingredients
-        Log.v(TAG,"$test")
+        rootView.findViewById<TextView>(R.id.recipeList).text = result
 
         //like button
         val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn)
