@@ -1,5 +1,5 @@
 /*
-    Contributors: Jacob Strozyk, Sarah West
+    Contributors: Jacob Strozyk, Siena South-Ciero, Sarah West
  */
 
 package edu.uw.info448.cocktailcreations
