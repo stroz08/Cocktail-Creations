@@ -39,6 +39,14 @@ class MainViewModel : ViewModel() {
         }
     }
 
+    val randomCocktailData: LiveData<List<Cocktail>>
+        get() = _randomCocktailData
+    private val _randomCocktailData: MutableLiveData<List<Cocktail>> by lazy {
+        MutableLiveData<List<Cocktail>>().also {
+            getRandom()
+        }
+    }
+
     val newCocktailData: LiveData<List<Cocktail>>
         get() = _newCocktailData
 
@@ -81,6 +89,22 @@ class MainViewModel : ViewModel() {
                 val body = response.body()
                 val cocktails = body!!.results
                 _newCocktailData.value = rawToCocktailConverter(cocktails)
+            }
+
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Failure: ${t.message}")
+            }
+        })
+    }
+
+    //get random cocktail
+    fun getRandom() {
+        CocktailDBApi.retrofitService.getRandom().enqueue(object : Callback<ResponseData> {
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                val body = response.body()
+                val cocktail = body!!.results
+                _randomCocktailData.value = rawToCocktailConverter(cocktail)
+                Log.v(TAG, "HERE: ${_randomCocktailData.value}")
             }
 
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
