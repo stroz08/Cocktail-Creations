@@ -41,6 +41,7 @@ class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, Cocktai
         val cocktailImg = item.image
         val cocktailName = item.name
         val recipe = item.recipe
+        Log.v(TAG, "$recipe")
         holder.cocktailName.text = item!!.name
         Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
 
