@@ -30,7 +30,7 @@
             app:argType="string"/>
         <argument
             android:name="recipe"
-            app:argType="edu.uw.info448.cocktailcreations.Ingredient[]"/>
+            app:argType="edu.uw.info448.cocktailcreations.Ingredient"/>
     </fragment>
 
 </navigation>
