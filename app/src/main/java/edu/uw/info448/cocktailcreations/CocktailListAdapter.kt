@@ -40,8 +40,8 @@ class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, Cocktai
         //Cocktail cards
         val cocktailImg = item.image
         val cocktailName = item.name
+        val directions = item.instructions
         val recipe = item.recipe
-        Log.v(TAG, "$recipe")
         holder.cocktailName.text = item!!.name
         Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
 
@@ -50,6 +50,8 @@ class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, Cocktai
             val argBundle = Bundle()
             argBundle.putString("cocktailName", cocktailName)
             argBundle.putString("cocktailImg", cocktailImg)
+            argBundle.putString("directions", directions)
+
             argBundle.putParcelableArrayList("recipe", recipe as ArrayList<Ingredient>?)
             it.findNavController().navigate(R.id.action_to_RecipeFragment, argBundle)
         }
