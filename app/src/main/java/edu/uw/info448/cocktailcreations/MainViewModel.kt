@@ -1,5 +1,5 @@
 /*
-    Contributors: Jacob Strozyk, Siena South-Ciero
+    Contributors: Jacob Strozyk, Sarah West
  */
 
 package edu.uw.info448.cocktailcreations
@@ -90,23 +90,15 @@ class MainViewModel : ViewModel() {
     }
 
     private fun rawToCocktailConverter(baseList: List<RawCocktailData>): List<Cocktail> {
-        val ingredientAttrList: MutableList<String> = mutableListOf()
-        val measureList: MutableList<String> = mutableListOf()
-        for (i in 1..15) ingredientAttrList.add("ingredient$i")
-        for (i in 1..15) measureList.add("measurement$i")
         val output: MutableList<Cocktail> = mutableListOf()
         for (raw in baseList) {
             val ingredientList: MutableList<Ingredient> = mutableListOf()
-            var test = RawCocktailData::class.memberProperties
-            var test1 = RawCocktailData::class.memberProperties
-            val rawIngreProps = test.filter { prop ->
+            val rawIngreProps = RawCocktailData::class.memberProperties.filter { prop ->
                 prop.name.startsWith("ingredient") && prop.get(raw) != null
             }
-            val rawMeasurementProps = test1.filter { prop ->
+            val rawMeasurementProps = RawCocktailData::class.memberProperties.filter { prop ->
                 prop.name.startsWith("measurement")
             }
-            Log.v(TAG, "$rawMeasurementProps")
-
             for (i in rawIngreProps.indices) {
                 val name = rawIngreProps[i].get(raw)
                 val measurement = rawMeasurementProps[i].get(raw)

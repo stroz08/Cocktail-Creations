@@ -30,23 +30,23 @@ data class RawCocktailData (
     @Json(name="strDrinkThumb")
     val image: String,
     @Json(name="strIngredient1")
-    val ingredient1: String?,
+    val ingredient01: String?,
     @Json(name="strIngredient2")
-    val ingredient2: String?,
+    val ingredient02: String?,
     @Json(name="strIngredient3")
-    val ingredient3: String?,
+    val ingredient03: String?,
     @Json(name="strIngredient4")
-    val ingredient4: String?,
+    val ingredient04: String?,
     @Json(name="strIngredient5")
-    val ingredient5: String?,
+    val ingredient05: String?,
     @Json(name="strIngredient6")
-    val ingredient6: String?,
+    val ingredient06: String?,
     @Json(name="strIngredient7")
-    val ingredient7: String?,
+    val ingredient07: String?,
     @Json(name="strIngredient8")
-    val ingredient8: String?,
+    val ingredient08: String?,
     @Json(name="strIngredient9")
-    val ingredient9: String?,
+    val ingredient09: String?,
     @Json(name="strIngredient10")
     val ingredient10: String?,
     @Json(name="strIngredient11")
@@ -60,23 +60,23 @@ data class RawCocktailData (
     @Json(name="strIngredient15")
     val ingredient15: String?,
     @Json(name="strMeasure1")
-    val measurement1: String?,
+    val measurement01: String?,
     @Json(name="strMeasure2")
-    val measurement2: String?,
+    val measurement02: String?,
     @Json(name="strMeasure3")
-    val measurement3: String?,
+    val measurement03: String?,
     @Json(name="strMeasure4")
-    val measurement4: String?,
+    val measurement04: String?,
     @Json(name="strMeasure5")
-    val measurement5: String?,
+    val measurement05: String?,
     @Json(name="strMeasure6")
-    val measurement6: String?,
+    val measurement06: String?,
     @Json(name="strMeasure7")
-    val measurement7: String?,
+    val measurement07: String?,
     @Json(name="strMeasure8")
-    val measurement8: String?,
+    val measurement08: String?,
     @Json(name="strMeasure9")
-    val measurement9: String?,
+    val measurement09: String?,
     @Json(name="strMeasure10")
     val measurement10: String?,
     @Json(name="strMeasure11")
