@@ -46,7 +46,7 @@ class RandomFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_random, container, false)
 
-        // Horizontal Views
+        // Horizontal Layout
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         // View Model

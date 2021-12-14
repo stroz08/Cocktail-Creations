@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Brandon Ly -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,6 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
+    android:fillViewport="true"
     tools:context=".RandomFragment">
 
     <TextView
@@ -16,6 +19,7 @@
         android:textSize="36sp"
         android:gravity="center"
         android:layout_margin="20dp"
+        android:fillViewport="true"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -32,35 +36,5 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         />
-
-    <!-- <ImageView
-        android:id="@+id/randomCocktailImg"
-        android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:src="@drawable/cocktail_image"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/randomCocktailName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/randomCocktailDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        />
-
-    <Button
-        android:id="@+id/random_button"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="@string/random"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        /> -->
 
 </LinearLayout>
