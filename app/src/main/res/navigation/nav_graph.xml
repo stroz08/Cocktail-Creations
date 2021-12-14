@@ -23,11 +23,8 @@
         android:label="Recipe Fragment"
         tools:layout="@layout/fragment_recipe_card">
         <action
-            android:id="@+id/action_to_HomeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_to_RandomFragment"
-            app:destination="@id/randomFragment" />
+            android:id="@+id/action_to_RecipeFragment"
+            app:destination="@id/RecipeCard" />
         <argument
             android:name="cocktailName"
             app:argType="string"/>
