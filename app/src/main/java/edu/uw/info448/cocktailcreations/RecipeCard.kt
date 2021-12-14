@@ -62,8 +62,8 @@ class RecipeCardFragment : Fragment() {
         val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn)
         heartBtn.setOnClickListener() {
             val res = resources.getDrawable(R.drawable.empty_heart)
-            Log.v(TAG, "$res")
-            Log.v(TAG, "$heartBtn.resources")
+            Log.v(TAG, "${heartBtn.getDrawable()}")
+            Log.v(TAG, "${res}")
             if (heartBtn.resources == res) {
                 heartBtn.setImageResource(R.drawable.filled_heart);
             } else {
