@@ -36,8 +36,8 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         //Adapter
-        val adapter = CocktailListAdapter(this, "list_cocktail_item")
-        val newAdapter = CocktailListAdapter(this, "list_cocktail_item")
+        val adapter = CocktailListAdapter(this)
+        val newAdapter = CocktailListAdapter(this)
 
 
         //popular cocktail

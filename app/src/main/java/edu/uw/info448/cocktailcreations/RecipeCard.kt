@@ -28,6 +28,7 @@ class RecipeCardFragment : Fragment() {
 
     private var cocktailName: String? = null
     private var cocktailImg: String? = null
+    private var recipe: List<Ingredient>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,28 +36,22 @@ class RecipeCardFragment : Fragment() {
         val args: RecipeCardFragmentArgs by navArgs()
         cocktailName = args.cocktailName
         cocktailImg = args.cocktailImg
+        recipe = args.recipe.toList()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_recipe_card, container, false)
 
-        //viewModel
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-        //Adapter
-        /*val adapter = CocktailListAdapter(this, "list_ingredient_item")
-
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.recipeRecyclerView)
-        recyclerView?.adapter = adapter
-        viewModel.popularCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
-            Log.v(TAG, "Updating: $it")
-            adapter.submitList(it)
-        })*/
-
         rootView.findViewById<TextView>(R.id.recipeCardName).text = cocktailName
         Glide.with(this).load("$cocktailImg").into(rootView.findViewById(R.id.recipeCardImg))
 
+        //ingredients
+        Log.v(TAG,"$recipe")
+        //rootView.findViewById<TextView>(R.id.recipeList).text = recipe
+
+
+        //like button
         val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn)
         heartBtn.setOnClickListener() {
             val res = resources.getDrawable(R.drawable.empty_heart)

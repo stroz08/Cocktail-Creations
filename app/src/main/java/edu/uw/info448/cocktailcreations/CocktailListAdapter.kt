@@ -20,34 +20,14 @@ import org.w3c.dom.Text
 
 private const val TAG = "CocktailListAdapter"
 
-class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
-    private lateinit var view: View
-
+class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, CocktailListAdapter.ViewHolder>(CocktailDiffCallback()) {
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //Cocktail Cards
         val cocktailName: TextView = view.findViewById(R.id.cocktailListName)
         val cocktailImg: ImageView = view.findViewById(R.id.cocktailListImg)
-
-        //Recipe Cards
-        /*val measurementList: TextView = view.findViewById(R.id.measurement)
-        val ingredientList: TextView = view.findViewById(R.id.ingredient)
-        val instruct: TextView = view.findViewById(R.id.directions_text)*/
     }
 
-    //Recipe Cards
-    /*inner class IngredientViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        //val measurementList: TextView = view.findViewById(R.id.measurement)
-        val ingredientList: TextView = view.findViewById(R.id.ingredient)
-        val instruct: TextView = view.findViewById(R.id.directions_text)
-    }*/
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        view = if(layoutType == "list_cocktail_item") {
-            LayoutInflater.from(parent.context).inflate(R.layout.list_cocktail_item, parent, false)
-        } else {
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.list_ingredient_item, parent, false)
-        }
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_cocktail_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -55,24 +35,17 @@ class CocktailListAdapter(val context: Fragment, val layoutType: String) : ListA
         val item = getItem(position)
 
         //Cocktail cards
-        if(layoutType == "list_cocktail_item") {
-            val cocktailImg = item.image
-            val cocktailName = item.name
+        val cocktailImg = item.image
+        val cocktailName = item.name
+        val recipe = item.recipe
+        holder.cocktailName.text = item!!.name
+        Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
 
-            holder.cocktailName.text = item!!.name
-            Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
-
-            //handle navigation
-            holder.cocktailImg.setOnClickListener {
-                val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg)
-                it.findNavController().navigate(action)
-            }
-        } else { //Recipe cards
-            /*holder.measurementList.text = item.measurement1
-            holder.ingredientList.text = item.ingredient1
-            holder.instruct.text = item.instructions*/
+        //handle navigation
+        holder.cocktailImg.setOnClickListener {
+            val action = HomeFragmentDirections.actionToRecipeFragment(cocktailName, cocktailImg, recipe)
+            it.findNavController().navigate(action)
         }
-
     }
 
     /*override fun getItemCount(): Int {
