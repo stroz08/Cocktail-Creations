@@ -1,6 +1,7 @@
 package edu.uw.info448.cocktailcreations
 
 //Siena South-Ciero and Sarah West worked on this fragment
+//Brandon Ly worked on heart button
 
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 private const val TAG = "Recipe Card"
 
@@ -22,6 +27,9 @@ class RecipeCardFragment : Fragment() {
     private var cocktailImg: String? = null
     private var recipe: List<Ingredient>? = null
     private var directions: String? = null
+
+    lateinit var favoriteRef: DatabaseReference
+    lateinit var database: FirebaseDatabase
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,9 +62,15 @@ class RecipeCardFragment : Fragment() {
 
         //like button
         val heartBtn = rootView.findViewById<CheckBox>(R.id.recipeHeartBtn)
+
+        //database.app.name
+        val user = Firebase.auth.currentUser
+
+
         heartBtn.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
                 showToast("Item added to Favorites")
+
             } else {
                 showToast("Item removed from Favorites")
             }
