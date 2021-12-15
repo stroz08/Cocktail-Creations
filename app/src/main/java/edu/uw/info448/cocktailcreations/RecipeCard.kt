@@ -71,7 +71,6 @@ class RecipeCardFragment : Fragment() {
         // Checks if heart button is clicked or not. Saves current cocktail name to firestore
         heartBtn.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
-                //showToast("$cocktailName added to Favorites")
                 if (!favorite.contains(cocktailName)) {
                     saveFireStore(cocktailName.toString())
                 }
@@ -88,7 +87,7 @@ class RecipeCardFragment : Fragment() {
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show()
     }
 
-    // Saves data to firestore
+    // Saves favorite drink data to firestore
     private fun saveFireStore(drinkName: String) {
         // getting firestore instance
         val db = FirebaseFirestore.getInstance()
@@ -99,13 +98,11 @@ class RecipeCardFragment : Fragment() {
         db.collection("favorites")
             .add(favorite)
             .addOnSuccessListener {
-                Toast.makeText(context, "$drinkName added to Favorites in DB", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "$drinkName added to Favorites", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Toast.makeText(context, "Failed to add to DB", Toast.LENGTH_SHORT).show()
             }
 
     }
-
-    //need a remove method
 }

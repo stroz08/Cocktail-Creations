@@ -33,12 +33,9 @@ private const val TAG = "ProfileFragment"
 
 class ProfileFragment : Fragment() {
 
-    private val REQUEST_IMAGE_CAPTURE = 1
-    private lateinit var viewModel: MainViewModel
-    private lateinit var database: DatabaseReference
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
@@ -56,9 +53,8 @@ class ProfileFragment : Fragment() {
             view.findViewById<TextView>(R.id.profileWelcome).text = "Please sign in"
         }
 
-        // Displays favorites
+        // Get favorites and show on recycler view
         readFireStoreData()
-
 
         // Add Drink button
         view.findViewById<Button>(R.id.add_drink_button).setOnClickListener {
@@ -72,20 +68,26 @@ class ProfileFragment : Fragment() {
 
 
     // Reads the firestore collection "Favorites" and appends to text view
-    fun readFireStoreData() {
+    private fun readFireStoreData() {
         val db = FirebaseFirestore.getInstance()
+        val favList : MutableList<String> = mutableListOf()
         db.collection("favorites")
             .get()
             .addOnCompleteListener {
-                val result: StringBuffer = StringBuffer()
                 if (it.isSuccessful) {
                     for (document in it.result!!) {
-                        result.append(document.data.getValue("drink-name")).append(" ")
+                        favList.add(document.data.getValue("drink-name").toString())
                     }
-                    view?.findViewById<TextView>(R.id.favList)?.setText(result)
+                    val adapter = FavoriteAdapter(favList)
+                    val recycler = view?.findViewById<RecyclerView>(R.id.favoriteCocktailRecyclerView)
+                    if (recycler != null) {
+                        recycler.layoutManager = LinearLayoutManager(context)
+                    }
+                    if (recycler != null) {
+                        recycler.adapter = adapter
+                    }
                 }
-
             }
-
     }
 }
+
