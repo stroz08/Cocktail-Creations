@@ -45,7 +45,6 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = layoutManager
         viewModel.popularCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
-            Log.v(TAG, "Updating: $it")
             adapter.submitList(it)
         })
 
@@ -54,7 +53,6 @@ class HomeFragment : Fragment() {
         newRecyclerView.adapter = newAdapter
         newRecyclerView.layoutManager = newLayoutManager
         viewModel.newCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
-            Log.v(TAG, "Updating: $it")
             newAdapter.submitList(it)
         })
 

@@ -3,6 +3,8 @@ package edu.uw.info448.cocktailcreations
 //Siena South-Ciero and Sarah West worked on this fragment
 //Brandon Ly worked on heart button and storing favorites to firebase
 
+import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,6 +15,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
