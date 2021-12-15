@@ -104,7 +104,6 @@ class MainViewModel : ViewModel() {
                 val body = response.body()
                 val cocktail = body!!.results
                 _randomCocktailData.value = rawToCocktailConverter(cocktail)
-                Log.v(TAG, "HERE: ${_randomCocktailData.value}")
             }
 
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
