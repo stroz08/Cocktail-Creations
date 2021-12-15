@@ -1,5 +1,7 @@
 package edu.uw.info448.cocktailcreations
 
+// Brandon Ly - Made profile welcome message, and favorites
+
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import edu.uw.info448.cocktailcreations.databinding.ActivityMainBinding
@@ -92,8 +96,24 @@ class ProfileFragment : Fragment() {
         //    Log.v(TAG, "Updating: $it")
         //    adapter.submitList(it)
         //})
-
+        readFireStoreData()
         return view
     }
 
+    fun readFireStoreData() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("favorites")
+            .get()
+            .addOnCompleteListener {
+                val result: StringBuffer = StringBuffer()
+                if (it.isSuccessful) {
+                    for (document in it.result!!) {
+                        result.append(document.data.getValue("drink-name")).append(" ")
+                    }
+                    view?.findViewById<TextView>(R.id.favList)?.setText(result)
+                }
+
+            }
+
+    }
 }
