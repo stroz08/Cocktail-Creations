@@ -1,6 +1,7 @@
 package edu.uw.info448.cocktailcreations
 
 //Siena South-Ciero and Sarah West worked on this fragment
+//Brandon Ly worked on heart button and storing favorites to firebase
 
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 private const val TAG = "Recipe Card"
 
@@ -22,7 +28,6 @@ class RecipeCardFragment : Fragment() {
     private var cocktailImg: String? = null
     private var recipe: List<Ingredient>? = null
     private var directions: String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,20 +57,45 @@ class RecipeCardFragment : Fragment() {
         rootView.findViewById<TextView>(R.id.recipeList).text = result
         rootView.findViewById<TextView>(R.id.directions_text).text = directions
 
-        //like button
+        // Create heart/favorite button
         val heartBtn = rootView.findViewById<CheckBox>(R.id.recipeHeartBtn)
+
+        // Checks if heart button is clicked or not. Saves current cocktail name to firestore
         heartBtn.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
-                showToast("Item added to Favorites")
+                //showToast("$cocktailName added to Favorites")
+                saveFireStore(cocktailName.toString())
+
             } else {
-                showToast("Item removed from Favorites")
+                showToast("$cocktailName removed from Favorites")
             }
         }
 
         return rootView
     }
 
+    // Displays toast to user, made for displaying heart button status
     private fun showToast(str: String) {
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show()
+    }
+
+    // Saves data to firestore
+    private fun saveFireStore(drinkName: String) {
+        // getting firestore instance
+        val db = FirebaseFirestore.getInstance()
+        // creating hashmap for favorite collection
+        val favorite: MutableMap<String, Any> = HashMap()
+        favorite["drink-name"] = drinkName
+
+        // adds drink to database and sends a toast to indicate status
+        db.collection("favorites")
+            .add(favorite)
+            .addOnSuccessListener {
+                Toast.makeText(context, "$drinkName added to Favorites in DB", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(context, "Failed to add to DB", Toast.LENGTH_SHORT).show()
+            }
+
     }
 }
