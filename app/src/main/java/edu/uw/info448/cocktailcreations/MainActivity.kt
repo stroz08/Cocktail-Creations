@@ -2,6 +2,7 @@
 package edu.uw.info448.cocktailcreations
 
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -15,6 +16,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.jetbrains.annotations.NotNull
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
