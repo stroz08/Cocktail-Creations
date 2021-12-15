@@ -9,16 +9,10 @@ import android.os.PersistableBundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import org.jetbrains.annotations.NotNull
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private val randomFragment = RandomFragment()
     private val profileFragment = ProfileFragment()
     private lateinit var auth: FirebaseAuth
+    private lateinit var bottomNavigation: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         //navigation
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.setOnNavigationItemSelectedListener {
+        bottomNavigation = findViewById(R.id.bottom_navigation)
+        bottomNavigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.homeFragment -> replaceFrag(homeFragment)
                 R.id.searchFragment -> replaceFrag(searchFragment)
@@ -51,11 +46,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-    }
-
-    //save state
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
     }
 
     private fun replaceFrag(fragment: Fragment) {
