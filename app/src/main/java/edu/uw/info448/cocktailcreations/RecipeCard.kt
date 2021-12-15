@@ -28,6 +28,7 @@ class RecipeCardFragment : Fragment() {
     private var cocktailImg: String? = null
     private var recipe: List<Ingredient>? = null
     private var directions: String? = null
+    private val favorite: MutableMap<String, Any> = HashMap()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,12 +61,17 @@ class RecipeCardFragment : Fragment() {
         // Create heart/favorite button
         val heartBtn = rootView.findViewById<CheckBox>(R.id.recipeHeartBtn)
 
+        if (favorite.contains(cocktailName)) {
+            heartBtn.isChecked
+        }
+
         // Checks if heart button is clicked or not. Saves current cocktail name to firestore
         heartBtn.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
                 //showToast("$cocktailName added to Favorites")
-                saveFireStore(cocktailName.toString())
-
+                if (!favorite.contains(cocktailName)) {
+                    saveFireStore(cocktailName.toString())
+                }
             } else {
                 showToast("$cocktailName removed from Favorites")
             }
@@ -84,7 +90,6 @@ class RecipeCardFragment : Fragment() {
         // getting firestore instance
         val db = FirebaseFirestore.getInstance()
         // creating hashmap for favorite collection
-        val favorite: MutableMap<String, Any> = HashMap()
         favorite["drink-name"] = drinkName
 
         // adds drink to database and sends a toast to indicate status
@@ -98,4 +103,6 @@ class RecipeCardFragment : Fragment() {
             }
 
     }
+
+    //need a remove method
 }
