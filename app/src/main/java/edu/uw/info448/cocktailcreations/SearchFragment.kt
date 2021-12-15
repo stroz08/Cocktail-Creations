@@ -35,6 +35,8 @@ class SearchFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_search, container, false)
 
+        // Initialize and set listener on radio buttons
+        // NOTE: Ingredient search mode does not support viewing cocktail details
         val radioGroup = rootView.findViewById<RadioGroup>(R.id.radio_group)
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
