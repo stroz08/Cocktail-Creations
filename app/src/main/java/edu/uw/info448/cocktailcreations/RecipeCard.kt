@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 
 private const val TAG = "Recipe Card"
@@ -51,17 +53,19 @@ class RecipeCardFragment : Fragment() {
         rootView.findViewById<TextView>(R.id.directions_text).text = directions
 
         //like button
-        val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn)
-        heartBtn.setOnClickListener() {
-            val res = resources.getDrawable(R.drawable.empty_heart)
-            Log.v(TAG, "${heartBtn.getDrawable()}")
-            Log.v(TAG, "${res}")
-            if (heartBtn.resources == res) {
-                heartBtn.setImageResource(R.drawable.filled_heart);
+        val heartBtn = rootView.findViewById<CheckBox>(R.id.recipeHeartBtn)
+        heartBtn.setOnCheckedChangeListener { checkBox, isChecked ->
+            if (isChecked) {
+                showToast("Item added to Favorites")
             } else {
-                heartBtn.setImageResource(R.drawable.empty_heart);
+                showToast("Item removed from Favorites")
             }
         }
+
         return rootView
+    }
+
+    private fun showToast(str: String) {
+        Toast.makeText(context, str, Toast.LENGTH_SHORT).show()
     }
 }
