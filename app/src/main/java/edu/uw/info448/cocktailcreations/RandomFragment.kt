@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.Volley
@@ -29,17 +30,8 @@ class RandomFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    private var cocktailName: String? = null
-    private var cocktailImg: String? = null
-    private var recipe: List<Ingredient>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            cocktailName = it.getString("cocktailName")
-            cocktailImg = it.getString("cocktailImg")
-            recipe = it.getParcelableArrayList("recipe")
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {

@@ -32,5 +32,4 @@
             android:name="recipe"
             app:argType="edu.uw.info448.cocktailcreations.Ingredient"/>
     </fragment>
-
 </navigation>
