@@ -1,6 +1,8 @@
 package edu.uw.info448.cocktailcreations
 
 // Brandon Ly - Made profile welcome message, and favorites
+// Sarah West - Added add drink button functionality, user drink retrieval and
+// rawToCocktailConverter method
 
 import android.app.Dialog
 import android.content.Intent

@@ -1,5 +1,7 @@
 package edu.uw.info448.cocktailcreations
 
+/* Sarah West wrote this file */
+
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap

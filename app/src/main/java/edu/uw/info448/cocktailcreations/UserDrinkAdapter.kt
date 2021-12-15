@@ -1,4 +1,5 @@
 package edu.uw.info448.cocktailcreations
+/* Sarah West wrote this file */
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
