@@ -67,9 +67,10 @@ class MainActivity : AppCompatActivity() {
     private fun logoutRedirect() {
         if (auth.currentUser != null) {
             auth.signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
         } else {
-            Toast.makeText(baseContext, "Error: no user data found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, "Error: no user data found. Redirecting to login.",
+                Toast.LENGTH_SHORT).show()
         }
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

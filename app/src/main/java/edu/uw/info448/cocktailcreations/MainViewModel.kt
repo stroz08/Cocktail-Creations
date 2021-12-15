@@ -166,7 +166,7 @@ class MainViewModel : ViewModel() {
                     measurement.toString()))
                 else ingredientList.add(Ingredient(name.toString(), null))
             }
-            output.add(Cocktail(raw.id, raw.name, raw.category, raw.glassType,
+            output.add(Cocktail(raw.name, raw.category, raw.glassType,
                 raw.instructions, raw.image, ingredientList))
         }
         return output
@@ -189,7 +189,7 @@ class MainViewModel : ViewModel() {
                     measurement.toString()))
                 else ingredientList.add(Ingredient(name.toString(), null))
             }
-            output.add(Cocktail(raw.id, raw.name, null, null, null, raw.image, null))
+            output.add(Cocktail(raw.name, null, null, null, raw.image, null))
         }
         return output
     }
