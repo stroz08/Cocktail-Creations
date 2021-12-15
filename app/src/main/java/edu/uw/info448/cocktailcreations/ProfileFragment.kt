@@ -80,7 +80,7 @@ class ProfileFragment : Fragment() {
         // Add Drink button
         view.findViewById<Button>(R.id.add_drink_button).setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.profileFragment, AddDrinkFragment())
+                .replace(R.id.nav_fragment, AddDrinkFragment())
                 .commit()
         }
 

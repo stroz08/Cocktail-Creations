@@ -16,6 +16,15 @@
             android:id="@+id/action_to_RecipeFragment"
             app:destination="@id/RecipeCard" />
     </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="edu.uw.info448.cocktailcreations.ProfileFragment"
+        android:label="Profile Fragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_to_RecipeFragment"
+            app:destination="@id/RecipeCard" />
+    </fragment>
 
     <fragment
         android:id="@+id/RecipeCard"
