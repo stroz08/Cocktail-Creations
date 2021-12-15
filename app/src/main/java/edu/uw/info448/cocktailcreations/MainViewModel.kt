@@ -149,6 +149,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
+    //converts the raw cocktail data into measurements for ingredients
     private fun rawToCocktailConverter(baseList: List<RawCocktailData>): List<Cocktail> {
         val output: MutableList<Cocktail> = mutableListOf()
         for (raw in baseList) {
@@ -172,6 +173,7 @@ class MainViewModel : ViewModel() {
         return output
     }
 
+    //converts the raw cocktail data for ingredients
     private fun rawByIngredientToCocktailConverter(baseList: List<RawCocktailByIngredientData>): List<Cocktail> {
         val output: MutableList<Cocktail> = mutableListOf()
         for (raw in baseList) {
