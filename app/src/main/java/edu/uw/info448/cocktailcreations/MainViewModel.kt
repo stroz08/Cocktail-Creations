@@ -129,7 +129,7 @@ class MainViewModel : ViewModel() {
             }
         })
     }
-
+    
     // Function for converting raw cocktail data into a list of cocktails
 
     private fun rawToCocktailConverter(baseList: List<RawCocktailData>): List<Cocktail> {
