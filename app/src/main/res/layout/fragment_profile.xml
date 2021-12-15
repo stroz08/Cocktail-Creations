@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Brandon Ly and Siena South-Ciero made this-->
+<!--Sarah West added every view after user_drink_title-->
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
