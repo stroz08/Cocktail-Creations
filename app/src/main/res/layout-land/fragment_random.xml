@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Siena South-Ciero made this layout-->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".RandomFragment"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".RandomFragment">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/RandomTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/RandomTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/random_drink_title"
-            android:textSize="36sp"
-            android:gravity="center"
-            android:layout_margin="20dp"
-            />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/cocktail_image"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="COCKTAIL DETAILS GO HERE"
-            android:gravity="center"
-            />
+        android:text="@string/random_drink_title"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:fillViewport="true"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/randomCocktailRecyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginLeft="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <Button
-            android:layout_width="250dp"
+            android:id="@+id/random_button"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/random"
             android:layout_gravity="center"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="40dp"
             />
-
     </LinearLayout>
-</ScrollView>
+
+</LinearLayout>

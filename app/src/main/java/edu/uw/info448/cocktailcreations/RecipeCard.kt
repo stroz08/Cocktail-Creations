@@ -10,25 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import android.graphics.drawable.Drawable
-
-
-
 
 private const val TAG = "Recipe Card"
 
 class RecipeCardFragment : Fragment() {
 
-    private lateinit var viewModel: MainViewModel
-
     private var cocktailName: String? = null
     private var cocktailImg: String? = null
     private var recipe: List<Ingredient>? = null
+    private var directions: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +28,7 @@ class RecipeCardFragment : Fragment() {
             cocktailName = it.getString("cocktailName")
             cocktailImg = it.getString("cocktailImg")
             recipe = it.getParcelableArrayList("recipe")
+            directions = it.getString("directions")
         }
     }
 
@@ -47,7 +39,6 @@ class RecipeCardFragment : Fragment() {
         rootView.findViewById<TextView>(R.id.recipeCardName).text = cocktailName
         Glide.with(this).load("$cocktailImg").into(rootView.findViewById(R.id.recipeCardImg))
         val size = recipe!!.size - 1
-        Log.v(TAG, "$recipe")
         var result = ""
         for(i in 0 .. size) {
             val index = recipe!![i]
@@ -57,13 +48,14 @@ class RecipeCardFragment : Fragment() {
             result += index.ingredientName + "\n"
         }
         rootView.findViewById<TextView>(R.id.recipeList).text = result
+        rootView.findViewById<TextView>(R.id.directions_text).text = directions
 
         //like button
         val heartBtn = rootView.findViewById<ImageView>(R.id.recipeHeartBtn)
         heartBtn.setOnClickListener() {
             val res = resources.getDrawable(R.drawable.empty_heart)
-            Log.v(TAG, "$res")
-            Log.v(TAG, "$heartBtn.resources")
+            Log.v(TAG, "${heartBtn.getDrawable()}")
+            Log.v(TAG, "${res}")
             if (heartBtn.resources == res) {
                 heartBtn.setImageResource(R.drawable.filled_heart);
             } else {

@@ -22,6 +22,9 @@
         android:name="edu.uw.info448.cocktailcreations.RecipeCardFragment"
         android:label="Recipe Fragment"
         tools:layout="@layout/fragment_recipe_card">
+        <action
+            android:id="@+id/action_to_RecipeFragment"
+            app:destination="@id/RecipeCard" />
         <argument
             android:name="cocktailName"
             app:argType="string"/>
@@ -32,4 +35,15 @@
             android:name="recipe"
             app:argType="edu.uw.info448.cocktailcreations.Ingredient"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/randomFragment"
+        android:name="edu.uw.info448.cocktailcreations.RandomFragment"
+        android:label="Random Fragment"
+        tools:layout="@layout/fragment_random">
+        <action
+            android:id="@+id/action_to_RecipeFragment"
+            app:destination="@id/RecipeCard" />
+    </fragment>
+
 </navigation>

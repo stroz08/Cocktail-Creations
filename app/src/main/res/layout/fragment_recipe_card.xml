@@ -6,14 +6,14 @@
     tools:context=".RecipeCardFragment"
     android:background="@color/white"
     android:fillViewport="true"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:paddingBottom="60dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
             android:id="@+id/recipeCardName"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:layout_margin="10dp"/>
@@ -30,36 +30,34 @@
             android:layout_gravity="end"
             android:layout_marginEnd="60dp"
             android:src="@drawable/empty_heart"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ingredients"
-            android:textSize="24sp"
-            android:layout_margin="10dp"/>
-<!--        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recipeRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
-        <TextView
-            android:id="@+id/recipeList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_margin="10dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/directions"
-            android:textSize="24sp"
-            android:layout_margin="10dp"/>
-        <TextView
-            android:id="@+id/directions_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_margin="10dp" />
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredients"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/recipeList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_marginTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/directions"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/directions_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"/>
+            </LinearLayout>
     </LinearLayout>
 </ScrollView>

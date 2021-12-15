@@ -12,13 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.RadioGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
 
 private const val TAG = "SearchFragment"
 
@@ -26,6 +25,7 @@ class SearchFragment : Fragment() {
 
     private lateinit var adapter: CocktailListAdapter
     private lateinit var viewModel: MainViewModel
+    private var searchName = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +34,20 @@ class SearchFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_search, container, false)
+
+        val radioGroup = rootView.findViewById<RadioGroup>(R.id.radio_group)
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.radiobutton_name -> {
+                    searchName = true
+                }
+                R.id.radiobutton_ingredient -> {
+                    searchName = false
+                    Toast.makeText(rootView.context, "WARNING: Viewing cocktail details not supported in" +
+                            " ingredient search mode because the API is janky.", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
 
         // Initialize ViewModel and observer
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
@@ -53,7 +67,11 @@ class SearchFragment : Fragment() {
         val searchButton = rootView.findViewById<Button>(R.id.search_button)
         searchButton.setOnClickListener {
             val inputContent = rootView.findViewById<EditText>(R.id.input).text
-            viewModel.getCocktails(rootView, inputContent.toString())
+            if (searchName) {
+                viewModel.getCocktails(rootView, inputContent.toString())
+            } else {
+                viewModel.getCocktailsByIngredient(rootView, inputContent.toString())
+            }
         }
 
         return rootView

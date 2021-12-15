@@ -4,13 +4,10 @@
 
 package edu.uw.info448.cocktailcreations.network
 
-import android.os.Parcelable
-import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import edu.uw.info448.cocktailcreations.ResponseData
-import kotlinx.android.parcel.Parcelize
-import kotlinx.android.parcel.RawValue
+import edu.uw.info448.cocktailcreations.ResponseDataByIngredient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -36,6 +33,14 @@ interface CocktailDBApiService {
     //Get random cocktail
     @GET("$KEY/random.php")
     fun getRandom(): Call<ResponseData>
+
+    //Get cocktail by ingredient
+    @GET("$KEY/filter.php?i=")
+    fun getCocktailsByIngredient(@Query("i") ingredientName: String): Call<ResponseDataByIngredient>
+
+    //Get cocktail by id
+    @GET("$KEY/lookup.php?i=")
+    fun getCocktailById(@Query("i") id: String): Call<ResponseData>
 }
 
 private val moshi = Moshi.Builder()

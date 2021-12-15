@@ -24,8 +24,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/randomCocktailRecyclerView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="350dp"
+        android:layout_gravity="center_horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <Button
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="@string/random"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginTop="5dp"
         />
 
 </LinearLayout>

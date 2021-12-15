@@ -3,6 +3,7 @@ package edu.uw.info448.cocktailcreations
 /*
     Contributors: Jacob Strozyk, Siena South-Ciero, Sarah West
  */
+
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
@@ -12,6 +13,12 @@ import kotlinx.android.parcel.RawValue
 data class ResponseData(
     @Json(name="drinks")
     val results : @RawValue List<RawCocktailData>
+) : Parcelable
+
+@Parcelize
+data class ResponseDataByIngredient(
+    @Json(name="drinks")
+    val results : @RawValue List<RawCocktailByIngredientData>
 ) : Parcelable
 
 //NOTE TO INSTRUCTOR: This is the format of the API response. The duplicate values are intentional
@@ -92,6 +99,16 @@ data class RawCocktailData (
 ) : Parcelable
 
 @Parcelize
+data class RawCocktailByIngredientData(
+    @Json(name = "strDrink")
+    val name: String,
+    @Json(name = "strDrinkThumb")
+    val image: String,
+    @Json(name = "idDrink")
+    val id: Int
+): Parcelable
+
+@Parcelize
 data class Cocktail(
     @Json(name = "idDrink")
     val id: Int,
@@ -100,9 +117,9 @@ data class Cocktail(
     @Json(name = "strCategory")
     val category: String?,
     @Json(name = "strGlass")
-    val glassType: String,
+    val glassType: String?,
     @Json(name = "strInstructions")
-    val instructions: String,
+    val instructions: String?,
     @Json(name = "strDrinkThumb")
     val image: String,
     val recipe: List<Ingredient>?
