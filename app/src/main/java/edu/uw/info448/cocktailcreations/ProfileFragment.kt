@@ -56,9 +56,26 @@ class ProfileFragment : Fragment() {
             view.findViewById<TextView>(R.id.profileWelcome).text = "Please sign in"
         }
 
-        // Displays favorites
-        readFireStoreData()
+        // Get Firestore instance
+        val db = FirebaseFirestore.getInstance()
 
+        // Displays favorites
+        readFireStoreData(db)
+
+        // Retrieve user drinks
+
+        db.collection("users")
+            .document(user!!.uid)
+            .get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val rawData = it.result!!.get("drinks") as List<HashMap<String, Any>>
+                    val userDrinkRecycler = view.findViewById<RecyclerView>(R.id.user_drink_list)
+                    val userDrinkAdapter = UserDrinkAdapter(rawToCocktailConverter(rawData))
+                    userDrinkRecycler.adapter = userDrinkAdapter
+                    userDrinkRecycler.layoutManager = LinearLayoutManager(container?.context)
+                }
+            }
 
         // Add Drink button
         view.findViewById<Button>(R.id.add_drink_button).setOnClickListener {
@@ -72,8 +89,7 @@ class ProfileFragment : Fragment() {
 
 
     // Reads the firestore collection "Favorites" and appends to text view
-    fun readFireStoreData() {
-        val db = FirebaseFirestore.getInstance()
+    private fun readFireStoreData(db: FirebaseFirestore) {
         db.collection("favorites")
             .get()
             .addOnCompleteListener {
@@ -87,5 +103,24 @@ class ProfileFragment : Fragment() {
 
             }
 
+    }
+
+    private fun rawToCocktailConverter(rawData: List<HashMap<String, Any>>): MutableList<Cocktail> {
+        val output: MutableList<Cocktail> = mutableListOf()
+        for (item in rawData) {
+            val ingredientsRaw = item["ingredients"] as List<HashMap<String, String>>
+            val ingredientList: MutableList<Ingredient> = mutableListOf()
+            for (ingreItem in ingredientsRaw) {
+                val newIngredient = Ingredient(ingreItem["ingredientName"].toString(),
+                    ingreItem["measurement"].toString()
+                )
+                ingredientList.add(newIngredient)
+            }
+            val newCocktail = Cocktail(item.get("name").toString(),
+                item.get("category").toString(), item.get("glass").toString(),
+                item.get("instructions").toString(), item.get("image").toString(), ingredientList)
+            output.add(newCocktail)
+        }
+        return output
     }
 }
