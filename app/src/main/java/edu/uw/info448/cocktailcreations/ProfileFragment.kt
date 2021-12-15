@@ -44,26 +44,21 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
         // Get current user
         val user = Firebase.auth.currentUser
-        user?.let {
-            // Name, email address, and profile photo Url
-            val name = user.displayName
-            val email = user.email
-
-            // Check if user's email is verified
-            val emailVerified = user.isEmailVerified
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getToken() instead.
-            val uid = user.uid
-        }
-
-        //val name = database.database.app.name
-        //Log.v(TAG, "Name: $name")
-        //Log.v(TAG, "Name: $user.favorites")
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        // Welcome message to signed in User
+        if (user != null) {
+            val welcomeMessage = "Welcome: ${user.email}"
+            view.findViewById<TextView>(R.id.profileWelcome).text = welcomeMessage
+        } else {
+            view.findViewById<TextView>(R.id.profileWelcome).text = "Please sign in"
+        }
+
+        // Displays favorites
+        readFireStoreData()
+
 
         // Add Drink button
         view.findViewById<Button>(R.id.add_drink_button).setOnClickListener {
@@ -72,34 +67,11 @@ class ProfileFragment : Fragment() {
                 .commit()
         }
 
-        if (user != null) {
-            val welcomeMessage = "Welcome: ${user.email}"
-            view.findViewById<TextView>(R.id.profileWelcome).text = welcomeMessage
-        } else {
-            view.findViewById<TextView>(R.id.profileWelcome).text = "Please sign in"
-        }
-
-        // Horizontal Layout
-        val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
-        // View Model
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
-        // Adapter
-        val adapter = CocktailListAdapter(this)
-
-        //Get Random cocktail
-        //val recyclerView = view.findViewById<RecyclerView>(R.id.favoriteCocktailRecyclerView)
-        //recyclerView.adapter = adapter
-        //recyclerView.layoutManager = layoutManager
-        //viewModel.randomCocktailData.observe(viewLifecycleOwner, Observer<List<Cocktail>> {
-        //    Log.v(TAG, "Updating: $it")
-        //    adapter.submitList(it)
-        //})
-        readFireStoreData()
         return view
     }
 
+
+    // Reads the firestore collection "Favorites" and appends to text view
     fun readFireStoreData() {
         val db = FirebaseFirestore.getInstance()
         db.collection("favorites")

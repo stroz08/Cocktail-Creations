@@ -29,10 +29,6 @@ class RecipeCardFragment : Fragment() {
     private var recipe: List<Ingredient>? = null
     private var directions: String? = null
 
-    lateinit var favoriteRef: DatabaseReference
-    lateinit var database: FirebaseDatabase
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -61,13 +57,10 @@ class RecipeCardFragment : Fragment() {
         rootView.findViewById<TextView>(R.id.recipeList).text = result
         rootView.findViewById<TextView>(R.id.directions_text).text = directions
 
-        //like button
+        // Create heart/favorite button
         val heartBtn = rootView.findViewById<CheckBox>(R.id.recipeHeartBtn)
 
-        //database.app.name
-        val user = Firebase.auth.currentUser
-
-
+        // Checks if heart button is clicked or not. Saves current cocktail name to firestore
         heartBtn.setOnCheckedChangeListener { checkBox, isChecked ->
             if (isChecked) {
                 //showToast("$cocktailName added to Favorites")
@@ -81,17 +74,21 @@ class RecipeCardFragment : Fragment() {
         return rootView
     }
 
+    // Displays toast to user, made for displaying heart button status
     private fun showToast(str: String) {
         Toast.makeText(context, str, Toast.LENGTH_SHORT).show()
     }
 
+    // Saves data to firestore
     private fun saveFireStore(drinkName: String) {
+        // getting firestore instance
         val db = FirebaseFirestore.getInstance()
+        // creating hashmap for favorite collection
         val favorite: MutableMap<String, Any> = HashMap()
         favorite["drink-name"] = drinkName
-        Log.v(TAG, favorite.toString())
 
-        db.collection("favorites[favorite]")
+        // adds drink to database and sends a toast to indicate status
+        db.collection("favorites")
             .add(favorite)
             .addOnSuccessListener {
                 Toast.makeText(context, "$drinkName added to Favorites in DB", Toast.LENGTH_SHORT).show()
