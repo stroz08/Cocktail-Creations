@@ -13,11 +13,18 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.IgnoreExtraProperties
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import org.w3c.dom.Text
 
 private const val TAG = "ProfileFragment"
 
 class ProfileFragment : Fragment() {
+
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +36,7 @@ class ProfileFragment : Fragment() {
         user?.let {
             // Name, email address, and profile photo Url
             val name = user.displayName
+            val fullName = user.providerData[0]
             val email = user.email
 
             // Check if user's email is verified
@@ -39,6 +47,7 @@ class ProfileFragment : Fragment() {
             // FirebaseUser.getToken() instead.
             val uid = user.uid
         }
+
 
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
@@ -56,8 +65,6 @@ class ProfileFragment : Fragment() {
         } else {
             view.findViewById<TextView>(R.id.profileWelcome).text = "Please sign in"
         }
-
-
 
         return view
     }
