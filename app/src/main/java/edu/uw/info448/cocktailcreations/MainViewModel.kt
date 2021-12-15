@@ -22,6 +22,8 @@ class MainViewModel : ViewModel() {
 
     private var _cocktailSearchData = MutableLiveData<List<Cocktail>>()
 
+//    private var _cocktailSearchDataByIngredient = MutableLiveData<List<Cocktail>>()
+
     val cocktailSearchData : LiveData<List<Cocktail>>
         get() = _cocktailSearchData
 
@@ -59,6 +61,41 @@ class MainViewModel : ViewModel() {
                 val cocktails = body!!.results
                 _cocktailSearchData.value = rawToCocktailConverter(cocktails)
                 Log.v(TAG, "Cocktails$cocktails")
+                Log.v(TAG, "Searching by name")
+            }
+
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Failure: ${t.message}")
+            }
+        })
+    }
+
+    // get cocktail by Ingredient
+    fun getCocktailsByIngredient(v: View, query: String) {
+        CocktailDBApi.retrofitService.getCocktailsByIngredient(query).enqueue(object: Callback<ResponseDataByIngredient> {
+            override fun onResponse(call: Call<ResponseDataByIngredient>, response: Response<ResponseDataByIngredient>) {
+                val body = response.body()
+                val cocktails = body!!.results
+                _cocktailSearchData.value = rawByIngredientToCocktailConverter(cocktails)
+                Log.v(TAG, "Cocktails$cocktails")
+                Log.v(TAG, "Searching by ingredient")
+            }
+
+            override fun onFailure(call: Call<ResponseDataByIngredient>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Failure: ${t.message}")
+            }
+        })
+    }
+
+    // Get cocktail by id
+    fun getCocktailById(v: View, query: String) {
+        CocktailDBApi.retrofitService.getCocktailById(query).enqueue(object: Callback<ResponseData> {
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                val body = response.body()
+                val cocktails = body!!.results
+                _cocktailSearchData.value = rawToCocktailConverter(cocktails)
+                Log.v(TAG, "Cocktails$cocktails")
+                Log.v(TAG, "Searching by id")
             }
 
             override fun onFailure(call: Call<ResponseData>, t: Throwable) {
@@ -132,6 +169,28 @@ class MainViewModel : ViewModel() {
             }
             output.add(Cocktail(raw.id, raw.name, raw.category, raw.glassType,
                 raw.instructions, raw.image, ingredientList))
+        }
+        return output
+    }
+
+    private fun rawByIngredientToCocktailConverter(baseList: List<RawCocktailByIngredientData>): List<Cocktail> {
+        val output: MutableList<Cocktail> = mutableListOf()
+        for (raw in baseList) {
+            val ingredientList: MutableList<Ingredient> = mutableListOf()
+            val rawIngreProps = RawCocktailByIngredientData::class.memberProperties.filter { prop ->
+                prop.name.startsWith("ingredient") && prop.get(raw) != null
+            }
+            val rawMeasurementProps = RawCocktailByIngredientData::class.memberProperties.filter { prop ->
+                prop.name.startsWith("measurement")
+            }
+            for (i in rawIngreProps.indices) {
+                val name = rawIngreProps[i].get(raw)
+                val measurement = rawMeasurementProps[i].get(raw)
+                if (measurement != null) ingredientList.add(Ingredient(name.toString(),
+                    measurement.toString()))
+                else ingredientList.add(Ingredient(name.toString(), null))
+            }
+            output.add(Cocktail(raw.id, raw.name, null, null, null, raw.image, null))
         }
         return output
     }

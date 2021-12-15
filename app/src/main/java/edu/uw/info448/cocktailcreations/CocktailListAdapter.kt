@@ -2,24 +2,22 @@ package edu.uw.info448.cocktailcreations
 /*
     Contributors: Jacob Strozyk, Siena South-Ciero, Sarah West
  */
-import android.content.Context
+
 import android.os.Bundle
-import android.os.Parcelable
-import android.text.Layout
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.w3c.dom.Text
 import java.util.ArrayList
+
 
 private const val TAG = "CocktailListAdapter"
 
@@ -41,25 +39,26 @@ class CocktailListAdapter(val context: Fragment) : ListAdapter<Cocktail, Cocktai
         val cocktailImg = item.image
         val cocktailName = item.name
         val directions = item.instructions
-        val recipe = item.recipe
+        var recipe = item.recipe
         holder.cocktailName.text = item!!.name
         Glide.with(context).load("$cocktailImg").into(holder.cocktailImg)
 
         //handle navigation
         holder.cocktailImg.setOnClickListener {
-            val argBundle = Bundle()
-            argBundle.putString("cocktailName", cocktailName)
-            argBundle.putString("cocktailImg", cocktailImg)
-            argBundle.putString("directions", directions)
+            if (recipe != null) {
+                val argBundle = Bundle()
+                argBundle.putString("cocktailName", cocktailName)
+                argBundle.putString("cocktailImg", cocktailImg)
+                argBundle.putString("directions", directions)
 
-            argBundle.putParcelableArrayList("recipe", recipe as ArrayList<Ingredient>?)
-            it.findNavController().navigate(R.id.action_to_RecipeFragment, argBundle)
+                argBundle.putParcelableArrayList("recipe", recipe as ArrayList<Ingredient>?)
+                it.findNavController().navigate(R.id.action_to_RecipeFragment, argBundle)
+            } else {
+                Toast.makeText(holder.itemView.context, "Sorry, Viewing cocktail details not supported in" +
+                        " ingredient search mode because the API is janky.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
-
-    /*override fun getItemCount(): Int {
-        return .size
-    }*/
 }
 
 class CocktailDiffCallback : DiffUtil.ItemCallback<Cocktail>() {
