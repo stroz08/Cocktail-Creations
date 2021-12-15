@@ -24,7 +24,7 @@ class SignupFragment: Fragment() {
         }
         val signUpButton = view.findViewById<Button>(R.id.signup_button)
         signUpButton.setOnClickListener {
-            //not sure how to pass in name yet
+            val name = view.findViewById<TextView>(R.id.name_box).text.toString()
             val email = view.findViewById<TextView>(R.id.email_box).text.toString()
             val password = view.findViewById<TextView>(R.id.password_box).text.toString()
             val confirmPassword = view.findViewById<TextView>(R.id.confirm_password_box)
@@ -33,7 +33,7 @@ class SignupFragment: Fragment() {
                 Toast.makeText(activity, "Sign up failed: Passwords do not match",
                     Toast.LENGTH_SHORT).show()
             } else {
-                (activity as LoginActivity).createAccount(email, password)
+                (activity as LoginActivity).createAccount(name, email, password)
             }
         }
         return view

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +14,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+
+private const val TAG = "AddDrinkFragment"
 
 class AddDrinkFragment: Fragment() {
-
-    private var uploadedImage = MutableLiveData<Bitmap>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,6 +30,17 @@ class AddDrinkFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add_drink, container, false)
+        val takePicLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                val extras = it.data!!.extras?.apply {
+                    val imageBitmap = get("data") as Bitmap
+                    val drinkPic = view.findViewById<ImageView>(R.id.drink_photo)
+                    drinkPic.setImageBitmap(imageBitmap)
+                }
+            }
+        }
 
         //Populate spinners
         val categorySpinner = view.findViewById<Spinner>(R.id.category_spinner)
@@ -43,18 +60,14 @@ class AddDrinkFragment: Fragment() {
         }
 
         // Camera Button
-        view.findViewById<ImageButton>(R.id.camera_button).setOnClickListener {
-            registerForActivityResult(
-                ActivityResultContracts.TakePicturePreview()) {
-                uploadedImage.postValue(it)
-                view.findViewById<ImageView>(R.id.drink_photo).setImageBitmap(uploadedImage.value)
-            }
+        view.findViewById<ImageButton>(R.id.camera_button).setOnClickListener{
+            takePicLauncher.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
 
         //Finish button
         view.findViewById<Button>(R.id.finish_button).setOnClickListener{
             if (allBoxesFilled()) {
-                submitCallback()
+                finishCallback()
             } else {
                 Toast.makeText(context, "Please fill in all fields!", Toast.LENGTH_SHORT)
                     .show()
@@ -78,8 +91,10 @@ class AddDrinkFragment: Fragment() {
         return true
     }
 
-    private fun submitCallback() {
+    private fun finishCallback() {
         val view = requireView()
+
+        // Get form answers
         val drinkName = view.findViewById<TextView>(R.id.drink_name_box).text.toString()
         val category = view.findViewById<Spinner>(R.id.category_spinner).selectedItem.toString()
         val glass = view.findViewById<Spinner>(R.id.glass_spinner).selectedItem.toString()
@@ -87,11 +102,52 @@ class AddDrinkFragment: Fragment() {
         val cocktailPic = view.findViewById<ImageView>(R.id.drink_photo).drawable
             .toBitmap()
             .toString()
-        //need to fix image location
-        val newCocktail = Cocktail(drinkName, category, glass, instructions, cocktailPic, null)
+        val recipe = recipeMaker(view.findViewById(R.id.ingredient_box),
+            view.findViewById(R.id.measurement_box))
+        val newCocktail = Cocktail(drinkName, category, glass, instructions, cocktailPic,
+            recipe)
+
+        // Submit to database & return
+        submitToDB(newCocktail)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_fragment, ProfileFragment())
+            .commit()
+
     }
 
-    private fun recipeMaker() {
-        //TODO: fill this in
+    private fun recipeMaker(ingredients: TextView, measurements: TextView): List<Ingredient> {
+        val output: MutableList<Ingredient> = mutableListOf()
+        val ingredientList = ingredients.text.toString().split(",")
+        val measureList = measurements.text.toString().split(",")
+        for (i in ingredientList.indices) {
+            val ingredient = ingredientList[i]
+            val measurement = measureList[i]
+            if (measurement != " ") output.add(Ingredient(ingredient, measurement))
+            else output.add(Ingredient(ingredient, null))
+        }
+        return output
+    }
+
+    private fun submitToDB (cocktail: Cocktail) {
+        val user = Firebase.auth.currentUser
+        val drinkMap = hashMapOf(
+            "creator" to user!!.uid,
+            "name" to cocktail.name,
+            "category" to cocktail.category,
+            "glass" to cocktail.glassType,
+            "instructions" to cocktail.instructions,
+            "image" to cocktail.image,
+            "ingredients" to cocktail.recipe
+        )
+        val db = FirebaseFirestore.getInstance()
+        db.collection("users")
+            .document(user!!.uid)
+            .update("drinks", FieldValue.arrayUnion(drinkMap))
+            .addOnSuccessListener {
+                Log.d(TAG, "Drink added successfully")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Failure when adding drink: $e")
+            }
     }
 }

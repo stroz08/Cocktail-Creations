@@ -32,8 +32,9 @@
     <string name="drink_ingredient_label">Ingredients</string>
     <string name="drink_ingredient_subtitle">List the ingredients you used and
         their measurements below. <b>Be mindful of spelling and separate each
-            ingredient and measurement with a comma.</b>
-        Make sure each measurement corresponds with each ingredient!</string>
+            ingredient and measurement with a comma.</b> If an ingredient has no
+        specific measurement, input a blank space followed by a comma. Make sure each
+        measurement corresponds with each ingredient!</string>
     <string name="ingredient_hint">Ingredient name</string>
     <string name="measurement_hint">Measurement</string>
     <string name="finish_button">Finish</string>
