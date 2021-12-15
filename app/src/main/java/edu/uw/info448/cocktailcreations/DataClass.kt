@@ -24,8 +24,6 @@ data class ResponseDataByIngredient(
 //NOTE TO INSTRUCTOR: This is the format of the API response. The duplicate values are intentional
 @Parcelize
 data class RawCocktailData (
-    @Json(name="idDrink")
-    val id: Int,
     @Json(name="strDrink")
     val name: String,
     @Json(name="strCategory")
@@ -110,8 +108,6 @@ data class RawCocktailByIngredientData(
 
 @Parcelize
 data class Cocktail(
-    @Json(name = "idDrink")
-    val id: Int,
     @Json(name = "strDrink")
     val name: String,
     @Json(name = "strCategory")

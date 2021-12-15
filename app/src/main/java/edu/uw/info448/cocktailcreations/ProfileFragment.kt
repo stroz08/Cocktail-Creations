@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
@@ -28,10 +30,8 @@ private const val TAG = "ProfileFragment"
 class ProfileFragment : Fragment() {
 
     private val REQUEST_IMAGE_CAPTURE = 1
-    private lateinit var database : DatabaseReference
-
     private lateinit var viewModel: MainViewModel
-
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,12 +61,11 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        // Camera Button
-        view.findViewById<ImageButton>(R.id.camera_button).setOnClickListener {
-            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            if (takePictureIntent.resolveActivity(requireContext().packageManager) != null) {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
+        // Add Drink button
+        view.findViewById<Button>(R.id.add_drink_button).setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.nav_fragment, AddDrinkFragment())
+                .commit()
         }
 
         if (user != null) {

@@ -84,11 +84,20 @@
 
 
 
+    <TextView
+        android:id="@+id/user_drink_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_drink_title"
+        app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
-    <ImageButton
-        android:id="@+id/camera_button"
+    <Button
+        android:id="@+id/add_drink_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:text="@string/add_drink_button_text"
+        app:layout_constraintTop_toBottomOf="@+id/fullNameTitle"
+        app:layout_constraintLeft_toLeftOf="@+id/emailAddressTitle" />
+
 
 </LinearLayout>
