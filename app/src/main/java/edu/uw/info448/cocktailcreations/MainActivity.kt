@@ -13,6 +13,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.os.Build
+import android.widget.ScrollView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 
 
 class MainActivity : AppCompatActivity() {
