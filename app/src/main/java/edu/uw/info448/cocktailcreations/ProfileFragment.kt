@@ -4,32 +4,19 @@ package edu.uw.info448.cocktailcreations
 // Sarah West - Added add drink button functionality, user drink retrieval and
 // rawToCocktailConverter method
 
-import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.StorageReference
-import edu.uw.info448.cocktailcreations.databinding.ActivityMainBinding
-import org.w3c.dom.Text
 
 private const val TAG = "ProfileFragment"
 
@@ -65,7 +52,6 @@ class ProfileFragment : Fragment() {
         readFireStoreData(db)
 
         // Retrieve user drinks
-
         db.collection("users")
             .document(user!!.uid)
             .get()
@@ -114,6 +100,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    // Converts firebase data to List of Cocktails
     private fun rawToCocktailConverter(rawData: List<HashMap<String, Any>>): MutableList<Cocktail> {
         val output: MutableList<Cocktail> = mutableListOf()
         for (item in rawData) {

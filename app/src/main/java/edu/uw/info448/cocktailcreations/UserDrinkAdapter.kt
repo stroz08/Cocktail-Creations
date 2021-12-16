@@ -1,5 +1,5 @@
 package edu.uw.info448.cocktailcreations
-/* Sarah West wrote this file */
+/* Sarah West wrote everything in this file */
 
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
@@ -43,6 +43,7 @@ class UserDrinkAdapter (private var userDrinkList: MutableList<Cocktail>):
         return userDrinkList.size
     }
 
+    // removes drink from firebase datastore and updates/re-renders list
     private fun removeDrink(drink: Cocktail) {
         userDrinkList.remove(drink)
         val user = Firebase.auth.currentUser

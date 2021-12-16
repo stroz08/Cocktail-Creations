@@ -1,6 +1,6 @@
 package edu.uw.info448.cocktailcreations
 
-/* Sarah West wrote this file */
+/* Sarah West wrote everything in this file */
 
 import android.app.Activity
 import android.content.Intent
@@ -15,9 +15,7 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -79,6 +77,7 @@ class AddDrinkFragment: Fragment() {
         return view
     }
 
+    //Checks that all text boxes are filled
     private fun allBoxesFilled(): Boolean{
         val root = requireView() as ViewGroup
         val childCount = root.childCount
@@ -93,6 +92,7 @@ class AddDrinkFragment: Fragment() {
         return true
     }
 
+    // Callback function to submit drink to database + redirect to profile fragment
     private fun finishCallback() {
         val view = requireView()
 
@@ -117,6 +117,7 @@ class AddDrinkFragment: Fragment() {
 
     }
 
+    // Converts ingredient and measurement text box answers to list of ingredients
     private fun recipeMaker(ingredients: TextView, measurements: TextView): List<Ingredient> {
         val output: MutableList<Ingredient> = mutableListOf()
         val ingredientList = ingredients.text.toString().split(",")
@@ -130,6 +131,7 @@ class AddDrinkFragment: Fragment() {
         return output
     }
 
+    // Creates hashmap to send to firebase
     private fun submitToDB (cocktail: Cocktail) {
         val user = Firebase.auth.currentUser
         val drinkMap = hashMapOf(

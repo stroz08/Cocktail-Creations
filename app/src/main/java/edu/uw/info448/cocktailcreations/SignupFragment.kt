@@ -1,6 +1,6 @@
 package edu.uw.info448.cocktailcreations
 
-// Sarah West wrote this file
+// Sarah West wrote everything in this file
 
 import android.os.Bundle
 import android.view.LayoutInflater
