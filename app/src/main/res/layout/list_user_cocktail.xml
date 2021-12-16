@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sarah West wrote this file -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/drink_thumbnail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxHeight="@android:dimen/thumbnail_height"
+            android:maxWidth="@android:dimen/thumbnail_width" />
+        <TextView
+            android:id="@+id/drink_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+        <ImageButton
+            android:id="@+id/delete_drink_button"
+            android:layout_width="0dp"
+            android:layout_height="@android:dimen/app_icon_size"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_delete"
+            android:backgroundTint="@color/white"
+            app:tint="@color/purple_500"/>
+
+    </LinearLayout>
+
+</FrameLayout>

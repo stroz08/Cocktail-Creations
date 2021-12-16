@@ -52,12 +52,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //replace fragment with new fragment
     private fun replaceFrag(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.nav_fragment, fragment)
         transaction.commit()
     }
 
+    //logs the user out
     private fun logoutRedirect() {
         if (auth.currentUser != null) {
             auth.signOut()

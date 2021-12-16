@@ -22,8 +22,6 @@ class MainViewModel : ViewModel() {
 
     private var _cocktailSearchData = MutableLiveData<List<Cocktail>>()
 
-//    private var _cocktailSearchDataByIngredient = MutableLiveData<List<Cocktail>>()
-
     val cocktailSearchData : LiveData<List<Cocktail>>
         get() = _cocktailSearchData
 
@@ -53,7 +51,7 @@ class MainViewModel : ViewModel() {
         get() = _newCocktailData
 
 
-    //get cocktail
+    // Get cocktails by name
     fun getCocktails(v: View, query: String) {
         CocktailDBApi.retrofitService.getCocktails(query).enqueue(object: Callback<ResponseData> {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
@@ -70,7 +68,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    // get cocktail by Ingredient
+    // Get cocktails by ingredient
     fun getCocktailsByIngredient(v: View, query: String) {
         CocktailDBApi.retrofitService.getCocktailsByIngredient(query).enqueue(object: Callback<ResponseDataByIngredient> {
             override fun onResponse(call: Call<ResponseDataByIngredient>, response: Response<ResponseDataByIngredient>) {
@@ -87,24 +85,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    // Get cocktail by id
-    fun getCocktailById(v: View, query: String) {
-        CocktailDBApi.retrofitService.getCocktailById(query).enqueue(object: Callback<ResponseData> {
-            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
-                val body = response.body()
-                val cocktails = body!!.results
-                _cocktailSearchData.value = rawToCocktailConverter(cocktails)
-                Log.v(TAG, "Cocktails$cocktails")
-                Log.v(TAG, "Searching by id")
-            }
-
-            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
-                Log.e(ContentValues.TAG, "Failure: ${t.message}")
-            }
-        })
-    }
-
-    //get popular cocktails
+    // Get popular cocktails
     fun getPopular() {
         CocktailDBApi.retrofitService.getPopular().enqueue(object : Callback<ResponseData> {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
@@ -119,7 +100,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    //get new cocktails
+    // Get new cocktails
     fun getLatest() {
         CocktailDBApi.retrofitService.getLatest().enqueue(object : Callback<ResponseData> {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
@@ -134,7 +115,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    //get random cocktail
+    // Get a random cocktail
     fun getRandom() {
         CocktailDBApi.retrofitService.getRandom().enqueue(object : Callback<ResponseData> {
             override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
@@ -148,6 +129,8 @@ class MainViewModel : ViewModel() {
             }
         })
     }
+    
+    // Function for converting raw cocktail data into a list of cocktails
 
     private fun rawToCocktailConverter(baseList: List<RawCocktailData>): List<Cocktail> {
         val output: MutableList<Cocktail> = mutableListOf()
@@ -171,6 +154,8 @@ class MainViewModel : ViewModel() {
         }
         return output
     }
+
+    // Function for converting raw cocktail ingredient data into a list of cocktails
 
     private fun rawByIngredientToCocktailConverter(baseList: List<RawCocktailByIngredientData>): List<Cocktail> {
         val output: MutableList<Cocktail> = mutableListOf()

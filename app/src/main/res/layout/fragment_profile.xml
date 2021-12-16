@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Brandon Ly and Siena South-Ciero made this-->
+<!--Sarah West added every view after user_drink_title-->
 
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,13 +31,20 @@
             android:id="@+id/favoriteCocktailsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Favorited Cocktails:"
+            android:text="@string/user_fav_drink"
             android:textStyle="bold"
             android:layout_margin="20dp"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/profileWelcome"
             app:layout_constraintLeft_toLeftOf="@+id/profileWelcome"
             />
+
+        <TextView
+            android:id="@+id/favList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/favoriteCocktailsTitle"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoriteCocktailRecyclerView"
@@ -45,26 +53,36 @@
             android:layout_margin="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@+id/favoriteCocktailsTitle"/>
+            android:layout_gravity="center_horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" /> -->
 
-        <TextView
-            android:id="@+id/user_drink_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/user_drink_title"
-            android:textStyle="bold"
-            android:layout_margin="20dp"
-            android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@+id/fullName" />
 
-        <Button
-            android:id="@+id/add_drink_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_drink_button_text"
-            app:layout_constraintTop_toBottomOf="@+id/fullNameTitle"
-            android:layout_margin="20dp"
-            app:layout_constraintLeft_toLeftOf="@+id/emailAddressTitle" />
+    <TextView
+        android:id="@+id/user_drink_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        android:textSize="20sp"
+        android:text="@string/user_drink_title"
+        app:layout_constraintTop_toBottomOf="@+id/favList" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/user_drink_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/user_drink_title"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    <Button
+        android:id="@+id/add_drink_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/add_drink_button_text"
+        app:layout_constraintTop_toBottomOf="@+id/user_drink_list"
+        app:layout_constraintLeft_toLeftOf="@+id/parent" />
 
     </LinearLayout>
 </ScrollView>

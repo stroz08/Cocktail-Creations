@@ -18,29 +18,25 @@ private const val BASE_URL = "https://www.thecocktaildb.com/api/json/v2/"
 private const val KEY = "9973533"
 
 interface CocktailDBApiService {
-    // Search for a cocktail by name
+    // Get cocktail by name
     @GET("$KEY/search.php?s=")
     fun getCocktails(@Query("s") cocktailName: String): Call<ResponseData>
 
-    //Get Popular cocktails
+    // Get Popular cocktails
     @GET("$KEY/popular.php")
     fun getPopular():  Call<ResponseData>
 
-    //Get new cocktails
+    // Get new cocktails
     @GET("$KEY/latest.php")
     fun getLatest():  Call<ResponseData>
 
-    //Get random cocktail
+    // Get random cocktail
     @GET("$KEY/random.php")
     fun getRandom(): Call<ResponseData>
 
-    //Get cocktail by ingredient
+    // Get cocktail by ingredient
     @GET("$KEY/filter.php?i=")
     fun getCocktailsByIngredient(@Query("i") ingredientName: String): Call<ResponseDataByIngredient>
-
-    //Get cocktail by id
-    @GET("$KEY/lookup.php?i=")
-    fun getCocktailById(@Query("i") id: String): Call<ResponseData>
 }
 
 private val moshi = Moshi.Builder()
