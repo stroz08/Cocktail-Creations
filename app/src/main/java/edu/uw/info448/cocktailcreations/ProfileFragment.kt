@@ -24,9 +24,13 @@ class ProfileFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?, ): View? {
         // Get current user
         val user = Firebase.auth.currentUser
 
@@ -74,19 +78,26 @@ class ProfileFragment : Fragment() {
 
     // Reads the firestore collection "Favorites" and appends to text view
     private fun readFireStoreData(db: FirebaseFirestore) {
+        val favList: MutableList<String> = mutableListOf()
         db.collection("favorites")
             .get()
             .addOnCompleteListener {
-                val result: StringBuffer = StringBuffer()
                 if (it.isSuccessful) {
                     for (document in it.result!!) {
-                        result.append(document.data.getValue("drink-name")).append(" ")
+                        favList.add(document.data.getValue("drink-name").toString())
                     }
-                    view?.findViewById<TextView>(R.id.favList)?.setText(result)
+                    val adapter = FavoriteAdapter(favList)
+                    val recycler =
+                        view?.findViewById<RecyclerView>(R.id.favoriteCocktailRecyclerView)
+                    if (recycler != null) {
+                        recycler.layoutManager = LinearLayoutManager(context)
+                    }
+                    if (recycler != null) {
+                        recycler.adapter = adapter
+                    }
                 }
-
             }
-
+        }
     }
 
     // Converts firebase data to List of Cocktails
@@ -96,16 +107,18 @@ class ProfileFragment : Fragment() {
             val ingredientsRaw = item["ingredients"] as List<HashMap<String, String>>
             val ingredientList: MutableList<Ingredient> = mutableListOf()
             for (ingreItem in ingredientsRaw) {
-                val newIngredient = Ingredient(ingreItem["ingredientName"].toString(),
+                val newIngredient = Ingredient(
+                    ingreItem["ingredientName"].toString(),
                     ingreItem["measurement"].toString()
                 )
                 ingredientList.add(newIngredient)
             }
-            val newCocktail = Cocktail(item.get("name").toString(),
+            val newCocktail = Cocktail(
+                item.get("name").toString(),
                 item.get("category").toString(), item.get("glass").toString(),
-                item.get("instructions").toString(), item.get("image").toString(), ingredientList)
+                item.get("instructions").toString(), item.get("image").toString(), ingredientList
+            )
             output.add(newCocktail)
         }
         return output
     }
-}

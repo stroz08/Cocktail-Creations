@@ -38,6 +38,7 @@
             app:layout_constraintTop_toBottomOf="@+id/profileWelcome"
             app:layout_constraintLeft_toLeftOf="@+id/profileWelcome"
             />
+
         <TextView
             android:id="@+id/favList"
             android:layout_width="wrap_content"
@@ -45,10 +46,13 @@
             android:layout_marginStart="20dp"
             app:layout_constraintTop_toBottomOf="@+id/favoriteCocktailsTitle"/>
 
-        <!--<androidx.recyclerview.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoriteCocktailRecyclerView"
             android:layout_width="wrap_content"
             android:layout_height="350dp"
+            android:layout_margin="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/favoriteCocktailsTitle"/>
             android:layout_gravity="center_horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" /> -->
 

@@ -1,4 +1,4 @@
-// Brandon Ly created the Random Fragment
+// Contributors: Brandon Ly
 
 package edu.uw.info448.cocktailcreations
 
@@ -56,11 +56,4 @@ class RandomFragment : Fragment() {
 
         return rootView
     }
-
-
-
-}
-
-class StringRequest(get: Any, url: String, listener: Any, errorListener: Any) {
-
 }
