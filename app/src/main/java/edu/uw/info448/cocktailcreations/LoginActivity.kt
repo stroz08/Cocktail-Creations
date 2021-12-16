@@ -1,6 +1,6 @@
 package edu.uw.info448.cocktailcreations
 
-/* Sarah West wrote this file */
+/* Sarah West wrote everything in file */
 
 import android.content.Intent
 import android.os.Bundle
@@ -28,6 +28,7 @@ class LoginActivity: AppCompatActivity() {
         }
     }
 
+    // Function to create user account and add user to firebase datastore
     fun createAccount(name: String, email: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -61,6 +62,7 @@ class LoginActivity: AppCompatActivity() {
             }
     }
 
+    // Function to log in preexisting user
     fun login(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -78,6 +80,7 @@ class LoginActivity: AppCompatActivity() {
             }
     }
 
+    // Function to redirect to main activity
     private fun toMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
